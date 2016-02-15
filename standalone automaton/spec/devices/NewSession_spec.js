@@ -1,6 +1,8 @@
 
 var deviceTab = require('./../../POM/deviceTab.js');
 var newSess = require('./../../POM/NewSessionPage.js');
+
+var settingsTabPage = require('./../../POM/settingsPage.js');
 var AppDataProvider = require('../../data/data.js');
 var using = require('jasmine-data-provider');
 
@@ -19,6 +21,8 @@ describe('TEST NEW SESSION TAB :::', function () {
 
     it('Verify whether New Session tab is displayed ', function ()
     {
+        settingsTabPage.settingsTab().click();
+        settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
         expect(newSess.newTab("New Session").getText()).toEqual('New Session');
      });
 
@@ -60,7 +64,7 @@ describe('TEST NEW SESSION TAB :::', function () {
     using(AppDataProvider.newSession, function (data, description) {
     it('Verify the session is Connected'+ description, function ()
     {
-        newSess. createNewSession(data.hostname_ip,data.user_name, data.password);
+        newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
         newSess.session_connected();
 
     });
@@ -81,7 +85,7 @@ describe('TEST NEW SESSION TAB :::', function () {
     using(AppDataProvider.newSession, function (data, description) {
     it('Verify the session Connection for multiple sessions'+ description, function ()
     {
-        newSess. createNewSession(data.hostname_ip,data.user_name, data.password);
+        newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type,"ON");
         newSess.session_connected();
 
     });
@@ -108,7 +112,6 @@ describe('TEST NEW SESSION TAB :::', function () {
 
     it('Verify Ip is updated to quick Connect form', function ()
     {
-
         newSess.quickConnText().sendKeys("172.18.192.14");
         newSess.connectBtn().click();
         expect(newSess.newTab("172.18.192.14").getText()).toEqual("172.18.192.14");
@@ -126,7 +129,7 @@ using(AppDataProvider.newSession, function (data, description) {
 
         it('Verify Device connection through Quick Connect '+ description, function ()
         {
-            newSess. quickConnect(data.hostname_ip,data.user_name, data.password);
+            newSess. quickConnect(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
             newSess.session_connected();
             newSess. disConnectSession();
             newSess.session_dis_connected();
@@ -136,14 +139,34 @@ using(AppDataProvider.newSession, function (data, description) {
 
     });//End of Data Provider
 
-    it('wait', function ()
+    it('Switch Off Enhanced Login Flow', function ()
     {
+        settingsTabPage.settingsTab().click();
+        settingsTabPage.handleOvalButton("Enhanced Login Flow","OFF");
 
-        browser.sleep(3000);
     });
 
+    using(AppDataProvider.newSession, function (data, description) {
 
 
+        it('Verify the session is Connected while Enhanced Login Flow is OFF'+ description, function ()
+        {
+
+            newSess. createNewSession(data.hostname_ip,data.user_name, data.password,data.conn_type,"OFF");
+            newSess.session_connected();
+
+        });
+        it('Verify the session is Closable while Enhanced Login Flow is OFF', function ()
+        {
+
+            newSess. disConnectSession();
+            newSess.session_dis_connected();
+            newSess.closeTab();
+      });
+
+
+
+    });
 
 
 

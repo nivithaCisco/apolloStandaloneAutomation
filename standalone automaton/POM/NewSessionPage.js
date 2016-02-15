@@ -1,5 +1,7 @@
 
-
+/**
+ * Created by vikkanna on 2/12/2016.
+ */
 
 var NewSessionTab = function() {
 
@@ -69,7 +71,7 @@ var NewSessionTab = function() {
 
     this.session_connected = function() {
         var EC = protractor.ExpectedConditions;
-        browser.wait(EC.visibilityOf(element(by.xpath("//div[@class= 'alert alert--success']"))),10000);
+        browser.wait(EC.visibilityOf(element(by.xpath("//div[@class= 'alert alert--success']"))),90000);
         element(by.xpath("//div[@class= 'alert alert--success']")).getText().then(function(text){
             expect(text).toEqual('Session Connected');
             browser.sleep(2000);
@@ -81,7 +83,7 @@ var NewSessionTab = function() {
 
     this.session_dis_connected = function() {
         var EC = protractor.ExpectedConditions;
-        browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='alert alert--danger']"))),10000);
+        browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='alert alert--danger']"))),90000);
         element(by.xpath("//div[@class='alert alert--danger']")).getText().then(function(text){
             expect(text).toEqual('Session Disconnected');
             browser.sleep(2000);
@@ -92,13 +94,22 @@ var NewSessionTab = function() {
 
 
 
-    this.createNewSession = function(host_name, user_name, pass) {
+    this.createNewSession = function(host_name, user_name, pass, conn_type, ELF) {
 
         this.newTab("New Session").click();
         this.hostName().sendKeys(host_name);
-        this.next().click();
+        if(conn_type == 'SSH') {
+            this.sshRadio().click();
+        }
+        else if (conn_type == 'TELNET') {
+            this.telnetRadio().click();
+        }
+    if(ELF=="ON") {
+    this.next().click();
+    }
         this.userName().sendKeys(user_name);
         this.password().sendKeys(pass);
+
         this.connect().click();
         this.handleAlert();
 
