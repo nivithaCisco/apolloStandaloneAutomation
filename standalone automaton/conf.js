@@ -36,13 +36,15 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-    specs:['./spec/devices/Landing_spec.js',
-            './spec/devices/download_spec.js',
-            './spec/devices/addDevice_spec.js',
-             './spec/devices/Filter_spec.js',
-              './spec/devices/sort_spec.js',
-              './spec/devices/SelectAll_spec.js',
-              './spec/devices/NewSession_spec.js'],
+    specs:['./spec/devices/NewSession_spec.js'
+  // './spec/devices/Landing_spec.js',
+  //          './spec/devices/download_spec.js',
+  //          './spec/devices/addDevice_spec.js',
+  //           './spec/devices/Filter_spec.js',
+  //            './spec/devices/sort_spec.js',
+  //            './spec/devices/SelectAll_spec.js',
+  //            './spec/devices/NewSession_spec.js'
+  ],
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
