@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="AP-1193" timestamp="2016-02-13T14:16:12" hostname="localhost" time="92.198" errors="0" tests="9" skipped="0" disabled="0" failures="0">
+  <testcase classname="AP-1193" name="Header Menu : ElementPresent" time="10.43" />
+  <testcase classname="AP-1193" name="Header Toolbar: ElementPresent" time="10.289" />
+  <testcase classname="AP-1193" name="Quick Connect Toolbar: ElementPresent" time="10.212" />
+  <testcase classname="AP-1193" name="Recent Connection Toolbar: ElementPresent" time="10.103" />
+  <testcase classname="AP-1193" name="Search Toolbar: ElementPresent" time="10.109" />
+  <testcase classname="AP-1193" name="Smart Toolbar: ElementPresent" time="10.307" />
+  <testcase classname="AP-1193" name="Filter Toolbar: ElementPresent" time="10.301" />
+  <testcase classname="AP-1193" name="Switch Input Toolbar: ElementPresent" time="10.11" />
+  <testcase classname="AP-1193" name="Sort Toolbar: ElementPresent" time="10.334" />
+ </testsuite>
+</testsuites>
