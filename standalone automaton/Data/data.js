@@ -4,9 +4,9 @@
 var AppDataProvider = function() {
 
     this.newSession = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab"},
-        "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab"},
-        "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab"},
+        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH"},
+        "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
 
     };
 
