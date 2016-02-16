@@ -213,6 +213,9 @@ var NewSessionTab = function() {
 
     };
 
+    this.getVersionTerminal=element(by.xpath('//div[contains(text(),"- Version: ")]'));
+
+
 
 };
 

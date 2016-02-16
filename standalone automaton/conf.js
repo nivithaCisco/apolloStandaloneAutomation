@@ -36,7 +36,7 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-    specs:['./spec/devices/NewSession_spec.js'
+    specs:['./spec/devices/QuickRecent_spec.js'
   // './spec/devices/Landing_spec.js',
   //          './spec/devices/download_spec.js',
   //          './spec/devices/addDevice_spec.js',

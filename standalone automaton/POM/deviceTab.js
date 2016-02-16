@@ -39,6 +39,11 @@ var DevicePage = function() {
     this.quickConnectButton=element(by.xpath('//input[@id="quickIP"]/../../../button'));
     this.headingRecentConnection=element(by.xpath('//div[@class="panel__header"]/h4'));
 
+
+    this.recentIpList=element.all(by.binding("getSessionInfo(recent.sessionName).name"));
+    this.recentTimeList=element.all(by.binding("recent.timestamp | fromNow:true"));
+
+
     this.switchInput=element.all(by.xpath('//span[@class="switch__input"]/span'));
 
 

@@ -9,6 +9,10 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
     this.importCSV=element(by.binding("::'_ImportFrom_' | i18n:'CSV'"));
     this.importPutty=element(by.binding("::'_ImportFrom_' | i18n:'PuTTY'"));
     this.importSecureCRT=element(by.binding("::'_ImportFrom_' | i18n:'SecureCRT'"));
+
+    this.cardConnect= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Connect"]')).click();}
+
+
 //----------------------------------------------------------------------------------------------------------------------------------
    this.search=element(by.model('searchText'));
     this.searchIcon=element(by.xpath('//input[@id="search"]/../label/span'));
@@ -49,6 +53,12 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
     {
         return element(by.binding("card.port")).getText();
     }
+    this.versionCard=function()
+    {
+        return element(by.binding("card.version")).getText();
+    }
+
+
     this.selectDevice = function(){
 
         element.all(by.css('a[ng-click="toggleSelected($event, card, true, options)"]')).then(function(rows) {
