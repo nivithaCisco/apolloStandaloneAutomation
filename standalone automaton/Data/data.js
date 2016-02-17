@@ -45,31 +45,75 @@ var AppDataProvider = function() {
         }
     }
 
-
-    this.AddDeviceDataProvider = {
+    this.TagDataProvider = {
+        'Mandate Hostanme': {
+            Mandatory: true,
+            deviceName: "",
+            ipAddress: "19.18.1.2",
+            port: "22",
+            location: "",
+            connectionType: "SSH",
+            inputTag: "",
+            Manufacture: "Cisco",
+            serialNumber: "",
+            notes: ""
+        },
         'All feilds': {
             Mandatory: false,
             deviceName: "TestDeviceCisco",
-            ipAddress: "192.68.1.1",
+            ipAddress: "19.18.1.1",
+            port: "22",
+            location: "BGL-25-1",
+            connectionType: "SSH",
+            inputTag: "testCsico",
+            serialNumber: "FNS13020QYU",
+            Manufacture: "Cisco",
+            notes: "This is for testing"
+        }
+    }
+
+    this.AddDeviceDataProvider = {
+        'Mandate Hostanme': {
+            Mandatory: true,
+            deviceName: "",
+            ipAddress: "swtg-891a.cisco.com",
+            port:"22",
+            location: "",
+            connectionType: "SSH",
+            inputTag: "",
+            Manufacture:"Cisco",
+            serialNumber: "",
+            notes: "",
+            user_name: "lab",
+            password:"lab"
+        },
+        'All feilds': {
+            Mandatory: false,
+            deviceName: "TestDeviceCisco",
+            ipAddress: "172.18.194.79",
             port:"22",
             location: "BGL-25-1",
             connectionType: "SSH",
             inputTag: "testCsico",
             serialNumber: "FNS13020QYU",
-            Manufacture:"Non-Cisco",
-            notes: "This is for testing"
+            Manufacture:"Cisco",
+            notes: "This is for testing",
+            user_name: "lab",
+            password:"lab"
         },
         'Mandate': {
             Mandatory: true,
             deviceName: "",
-            ipAddress: "192.168.1.2",
+            ipAddress: "172.18.192.14",
             port:"22",
             location: "",
             connectionType: "SSH",
             inputTag: "",
-            Manufacture:"Non-Cisco",
+            Manufacture:"Cisco",
             serialNumber: "",
-            notes: ""
+            notes: "",
+            user_name: "lab",
+            password:"lab"
         }
     }
 

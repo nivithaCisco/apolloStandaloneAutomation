@@ -74,7 +74,7 @@ describe('Recent + Quick', function () {
 
 
         it('Verify Connection through SmartCard'+ description, function () {
-             deviceTabMain.cardConnect();
+            deviceTabMain.cardConnect();
             browser.sleep(10000)
             newSess.userName().sendKeys(data.user_name);
             newSess.password().sendKeys(data.password);

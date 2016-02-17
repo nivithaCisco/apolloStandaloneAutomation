@@ -142,15 +142,36 @@ var DevicePage = function() {
     this.filterFavHide=element(by.xpath('//span[@ng-bind="filterGroup.label"][text()="Favorites"]/../small/span'));
     this.filterTagHide=element(by.xpath('//span[@ng-bind="filterGroup.label"][text()="Tags"]/../small/span'));
 
-
+this.tagList=element(by.repeater('(idx, tag) in tags'));
     this.editTagList= function()
     {
        return element.all(by.repeater('(idx, tag) in tags')).getText();
     }
+
+    this.tagName= function(value)
+    {
+        return element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]'));
+    }
+
+
+
+    this.deleteTag= function(value)
+    {
+        return element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]/../a'))
+    }
+
+
+
     this.closeEditModel= function()
     {
         element.all(by.css('button[ng-click="$dismiss()"]')).get(0).click();
     }
+
+    this.closeTagModel= function()
+    {
+        element(by.css('button[ng-click="$close(); closeInputTags();"]')).click();
+    }
+
 
     this.nextDevicePage = function()
     {

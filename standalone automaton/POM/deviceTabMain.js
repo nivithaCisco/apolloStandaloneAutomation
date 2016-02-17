@@ -11,6 +11,9 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
     this.importSecureCRT=element(by.binding("::'_ImportFrom_' | i18n:'SecureCRT'"));
 
     this.cardConnect= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Connect"]')).click();}
+this.cardFavIcon=element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Toggle Favorite"]/span'));
+    this.cardFav= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Toggle Favorite"]')).click();}
+    this.cardEdit= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).click();}
 
 
 //----------------------------------------------------------------------------------------------------------------------------------
@@ -185,9 +188,9 @@ this.addTagBulk=function(value)
     };
 
 
-
+this.tag=element(by.id('inputTag'));
     this.setTag = function(name) {
-        element(by.id('inputTag')).sendKeys(name);
+        this.tag.sendKeys(name);
         element(by.css('button[ng-click="addTag(tagText);"]')).click()
     };
 

@@ -56,7 +56,7 @@ describe('Sorting', function () {
 
                                     console.log("page index :" + pageIndex + " dev no :" + j);
 
-                                    element.all(by.css('a[ng-click="editDevice(card); $event.stopPropagation()"]')).get(j-1).click();
+                                    element.all(by.css('a[ng-click="editDevice(card); $event.stopPropagatio')).get(j-1).click();
 
                                     expect(DeviceTab.editTagList()).toContain(filterValue);
 
