@@ -68,12 +68,16 @@ describe('Add Device tests', function () {
 
             if (!data.Mandatory){
                 console.log("here")
-                expect(DeviceTab.editTagList().length).toBe(1);
-                expect(DeviceTab.tagName(data.tagName).isPresent()).toBeTruthy();
+                DeviceTab.allTagList.getText().then(function(items) {
+                    expect(items.length).toBe(1);
+                    console.log(items)
+                    expect(DeviceTab.tagName(data.inputTag).isPresent()).toBeTruthy();
+                });
             }else
             {
                 console.log("here 2")
 
+                console.log(DeviceTab.tagList)
                 expect(DeviceTab.tagList.isPresent()).toBeFalsy();
 
 
@@ -83,10 +87,9 @@ describe('Add Device tests', function () {
 
         });
 
-
-        it('verify Tag in Bulk Action', function() {
-
+        xit('verify Tag in Bulk Action', function() {
             deviceTabMain.selectDevice();
+
             deviceTabMain.bulkAction();
             deviceTabMain.addTagOption();
             if (!data.Mandatory){
@@ -110,7 +113,6 @@ describe('Add Device tests', function () {
 
 
         it('Delete Device - ' + description, function () {
-            browser.sleep(3000);
             deviceTabMain.deleteDevice();
             deviceTabMain.removeSearch();
             expect(element.all(by.className('gritter-title')).getText()).toContain('Delete Device');
