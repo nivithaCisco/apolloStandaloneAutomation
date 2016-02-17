@@ -143,7 +143,7 @@ var DevicePage = function() {
     this.filterTagHide=element(by.xpath('//span[@ng-bind="filterGroup.label"][text()="Tags"]/../small/span'));
 
     this.tagList=element(by.repeater('(idx, tag) in tags'));
-    this.allTagList=element.all(by.repeater('(idx, tag) in tags'));
+    this.allTagList=element.all(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span'));
 
     this.editTagList= function()
     {
@@ -151,7 +151,7 @@ var DevicePage = function() {
     }
 
     this.tagName= function(value)
-    {
+    {  value=value.toLowerCase();
 
         return element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]'));
     }
