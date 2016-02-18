@@ -143,7 +143,7 @@ var DevicePage = function() {
     this.filterTagHide=element(by.xpath('//span[@ng-bind="filterGroup.label"][text()="Tags"]/../small/span'));
 
     this.tagList=element(by.repeater('(idx, tag) in tags'));
-    this.allTagList=element.all(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span'));
+    this.allTagList=element.all(by.xpath('//div[@ng-show="tagsKey == 0"]/span[@ng-repeat="(idx, tag) in tags"]/span'));
 
     this.editTagList= function()
     {
@@ -153,14 +153,21 @@ var DevicePage = function() {
     this.tagName= function(value)
     {  value=value.toLowerCase();
 
-        return element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]'));
+        return element(by.xpath('//div[@ng-show="tagsKey == 0"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]'));
     }
 
 
 
     this.deleteTag= function(value)
-    {
-        return element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]/../a'))
+    {  value=value.toLowerCase();
+
+        element(by.xpath('//div[@ng-show="tagsKey == 0"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]/../a')).click();
+    }
+
+    this.deleteTagModal= function(value)
+    {  value=value.toLowerCase();
+
+        element(by.xpath('//div[@ng-show="tagsKey == 1"]/span[@ng-repeat="(idx, tag) in tags"]/span[text()="'+value+'"]/../a')).click();
     }
 
 
@@ -172,7 +179,7 @@ var DevicePage = function() {
 
     this.closeTagModel= function()
     {
-        element(by.css('button[ng-click="$close(); closeInputTags();"]')).click();
+        element.all(by.css('button[ng-click="$close(); closeInputTags();"]')).get(1).click();
     }
 
 
@@ -198,13 +205,40 @@ var DevicePage = function() {
         var showAllElem = filterElem.element(by.css('a[ng-click="filterGroup.expanded = true"]'));
 
         return showAllElem.isPresent().then(function(isvisible){
-            console.log("show all : "+this.showAllElem);
+            console.log("show all : "+isvisible);
             if(isvisible) {
 
                 showAllElem.click();
             }
 
         });
+
+    };
+
+    this.checkFilter = function (value,filterValue) {
+
+        filterValue=filterValue.toLowerCase();
+
+        var showAllElem = element(by.xpath('//div[.="'+value+'"]/../div[2]/a'));
+        var tagValue = "!filterGroup.expanded";
+
+
+        var result=showAllElem.isPresent().then(function (isvisible) {
+            console.log("show all : " + isvisible);
+            if (isvisible) {
+                showAllElem.click();
+                tagValue = "filterGroup.expanded";
+              return element(by.xpath("//label[@ng-show='"+tagValue+"']/div[@title='"+filterValue+"']")).isPresent();
+
+            }
+            else
+            {
+              return  element(by.xpath("//label[@ng-show='"+tagValue+"']/div[@title='"+filterValue+"']")).isPresent();
+
+            }
+
+        });
+        return result;
 
     };
 
@@ -217,7 +251,6 @@ var DevicePage = function() {
 
 
         return showAllElem.isPresent().then(function (isvisible) {
-            console.log("show all : " + isvisible);
             if (isvisible) {
                 showAllElem.click();
                 tagValue = "filterGroup.expanded";

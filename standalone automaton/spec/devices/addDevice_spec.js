@@ -5,6 +5,7 @@ var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var AppDataProvider = require('./../../Data/data.js');
 var settingsTabPage = require('./../../POM/settingsPage.js');
 var DeviceTab = require('./../../POM/deviceTab.js');
+var EC = protractor.ExpectedConditions;
 
 var newSess = require('./../../POM/NewSessionPage.js');
 
@@ -85,10 +86,20 @@ describe('Add Device tests', function () {
             newSess.password().sendKeys(data.password);
             newSess.connect().click();
             newSess.handleAlert();
+            browser.wait(EC.visibilityOf(newSess.getVersionTerminal),90000);
+            var version= (newSess.getVersionTerminal).getText().then(function(value){
+
+                console.log(value.split(" ")[3]);
+                value=value.split(" ")[3];
+                return value;
+            });
             newSess. disConnectSession();
             newSess.session_dis_connected();
             newSess.closeTab();
+
             browser.sleep(10000);
+            expect(deviceTabMain.versionCard()).toEqual(version);
+
             deviceTabMain.removeSearch();
 
 
@@ -103,23 +114,15 @@ describe('Add Device tests', function () {
             });
         });
 
-        it('Favorite from card', function() {
-            expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-muted');
-            deviceTabMain.cardFav();
-            expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-warning-alt');
+        //it('Favorite from card', function() {
+        //    expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-muted');
+        //    deviceTabMain.cardFav();
+        //    expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-warning-alt');
+        //
+        //
+        //});
 
 
-        });
-
-        it('Add Tag', function() {
-
-
-            deviceTabMain.addTagBulk("TagChange");
-            expect(element.all(by.className('gritter-title')).getText()).toContain('Device Updated');
-            expect(DeviceTab.editTagList()).toContain("TagChange");
-
-
-        });
 
         it('Delete Device - ' + description, function () {
             browser.sleep(3000);

@@ -76,11 +76,22 @@ this.cardFavIcon=element(by.xpath('//div [@class="card__footer ng-scope"]/a[@too
         element(by.xpath('//div/span/span[2]/a')).click();
     }
     this.deleteOption= function() { element(by.binding("'_Delete_' | i18n")).click();}
+
+    this.deleteTagOption= function() { element(by.binding("::'_DeleteTags_' | i18n")).click();}
+
     this.addTagOption= function() { element(by.binding("'_AddTags_' | i18n")).click();}
 
     this.deleteButton=function() {
         element(by.buttonText("Delete")).click();
     }
+
+    this.addCard= function()
+
+        {
+            element(by.binding("(editing ? '_Save_' : '_Add_') | i18n")).click();
+        }
+
+
     this.savetag= function()
 
     {
@@ -91,10 +102,7 @@ this.cardFavIcon=element(by.xpath('//div [@class="card__footer ng-scope"]/a[@too
 //
 this.addTagBulk=function(value)
 {
-    this.selectDevice();
 
-    this.bulkAction();
-    this.addTagOption();
     browser.sleep(4000);
     this.setTag(value);
     browser.sleep(2000);
@@ -189,9 +197,11 @@ this.addTagBulk=function(value)
 
 
 this.tag=element(by.id('inputTag'));
+
     this.setTag = function(name) {
         this.tag.sendKeys(name);
-        element(by.css('button[ng-click="addTag(tagText);"]')).click()
+        browser.sleep(3000);
+       element(by.css('button[ng-click="addTag(tagText);"]')).click()
     };
 
 
@@ -202,10 +212,9 @@ this.tag=element(by.id('inputTag'));
         browser.sleep(3000);
     };
 
-    var close = element(by.xpath("//span[@class='icon-close"));
+    var close = element(by.xpath("//span[@class='icon-close]"));
 
     this.getClose = function() {
-        browser.sleep(3000);
         close.click();
     };
 

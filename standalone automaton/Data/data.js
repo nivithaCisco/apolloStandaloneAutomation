@@ -26,7 +26,11 @@ var AppDataProvider = function() {
         'Tag': {
             filterName: "Tags",
             value: "good",
-        }    }
+        }  ,
+        'No Tags': {
+        filterName: "Tags",
+        value: "No Tags",
+    }    }
 
     this.filterCheckerdataProvider = {
 
@@ -65,7 +69,7 @@ var AppDataProvider = function() {
             port: "22",
             location: "BGL-25-1",
             connectionType: "SSH",
-            inputTag: "testCsico",
+            inputTag: "testCisco",
             serialNumber: "FNS13020QYU",
             Manufacture: "Cisco",
             notes: "This is for testing"
