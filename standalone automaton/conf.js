@@ -41,6 +41,8 @@ exports.config = {
         './spec/devices/SelectAll_spec.js',
         './spec/devices/Filter_spec.js',
         './spec/devices/sort_spec.js',
+        
+//All these specs are based on non predefined data
 
         './spec/devices/Landing_spec.js',
         './spec/devices/download_spec.js',
