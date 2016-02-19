@@ -98,6 +98,9 @@ describe('Add Device tests', function () {
             newSess.closeTab();
 
             browser.sleep(10000);
+            deviceTabMain.setSearch(data.ipAddress);
+            browser.sleep(10000);
+            browser.wait((deviceTabMain.isLoading).isPresent());
             expect(deviceTabMain.versionCard()).toEqual(version);
 
             deviceTabMain.removeSearch();
@@ -126,6 +129,9 @@ describe('Add Device tests', function () {
 
         it('Delete Device - ' + description, function () {
             browser.sleep(3000);
+            deviceTabMain.setSearch(data.ipAddress);
+            browser.sleep(10000);
+            browser.wait((deviceTabMain.isLoading).isPresent());
             deviceTabMain.deleteDevice();
             deviceTabMain.removeSearch();
             expect(element.all(by.className('gritter-title')).getText()).toContain('Delete Device');

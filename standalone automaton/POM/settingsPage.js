@@ -11,12 +11,28 @@ var settingsTabPage = function() {
         browser.sleep(2000);
         return  element(by.binding("::'_Settings_' | i18n"));
     }
+
+    this.devicesTab= function() {
+        browser.sleep(2000);
+        return  element(by.binding("::'_Devices_' | i18n"));
+    }
+
+
+
 //----General Section----
 
     this.scrollBuffer= function() {
         browser.sleep(2000);
-        return  element(by.xpath("//input[@class='ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max']"));
+        return  element(by.xpath("//input[@ng-model= 'scrollback.value']"));
     }
+
+
+
+    this.ErrorMSG= function(msg) {
+        browser.sleep(2000);
+        return  element(by.xpath("//span[text()='"+msg+"']/parent::*[@class='help-block text-danger ng-hide']"));
+    };
+
 
     this.sshRadio= function() {
         browser.sleep(2000);
@@ -27,6 +43,19 @@ var settingsTabPage = function() {
         browser.sleep(2000);
         return  element(by.binding("::'_TELNET_' | i18n"));
     };
+
+    this.SSHClicked= function() {
+        browser.sleep(2000);
+        return  element(by.xpath('//span[@ng-bind="'+"::'_SSH_' | i18n"+'"]/parent::*/input[@checked="checked"]'));
+    };
+
+    this.telnetClicked= function() {
+        browser.sleep(2000);
+        return  element(by.xpath('//span[@ng-bind="'+"::'_TELNET_' | i18n"+'"]/parent::*/input[@checked="checked"]'));
+    };
+
+
+
     /*
     this.CHH= function() {
         browser.sleep(2000);
@@ -53,18 +82,25 @@ var settingsTabPage = function() {
         browser.sleep(2000);
         return  element(by.binding("::'_SAConsoleSelectionBehavior_' | i18n"));
     };
-/*
-    this.ReConnWithCred= function() {
+    this.getdropDownText =function(label) {
         browser.sleep(2000);
-        return  element(by.binding("::'_SAReconnectCredentialsLabel_' | i18n"));
+        return  element.all(by.xpath("//label[text()='"+label+"']/parent::*/select/child::*"));
     };
 
-    this.autoSessCap= function() {
-        browser.sleep(2000);
-        return  element(by.binding("::'_SAEnableSessionCapture_' | i18n"));
-    };
 
-*/
+
+    /*
+        this.ReConnWithCred= function() {
+            browser.sleep(2000);
+            return  element(by.binding("::'_SAReconnectCredentialsLabel_' | i18n"));
+        };
+
+        this.autoSessCap= function() {
+            browser.sleep(2000);
+            return  element(by.binding("::'_SAEnableSessionCapture_' | i18n"));
+        };
+
+    */
     this.logDir= function() {
         browser.sleep(2000);
         return  element(by.xpath("//input[@id='dirValue']"));
@@ -81,7 +117,7 @@ var settingsTabPage = function() {
     };
     this.protocolInp= function() {
         browser.sleep(2000);
-        return  element(by.xpath("//select[@class='ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max']"));
+        return  element(by.binding("::'_Protocol_' | i18n"));
     };
 
 
@@ -107,6 +143,7 @@ var settingsTabPage = function() {
 
 
 
+
 //----Security----
     this.masterPass= function() {
         browser.sleep(2000);
@@ -123,11 +160,35 @@ var settingsTabPage = function() {
 //----Apperance----
     this.theme =function() {
         browser.sleep(2000);
-        return  element(by.binding("::'_Theme_' | i18n"));
+        return  element(by.xpath("//select[@id='terminal-theme']"));
+    };
+
+    this.themeValue =function() {
+        browser.sleep(2000);
+        return  element.all(by.xpath("//select[@id='terminal-theme']/child::*"));
     };
 
 
-//select[@id='terminal-theme']/option[@value][position()=3]
+    this.consoleBGColor =function() {
+        browser.sleep(2000);
+        return  element.all(by.xpath("//div[contains(text(),'Select a theme from the menu above')]/parent::*"));
+    };
+
+    this.consoleTextColor =function() {
+        browser.sleep(2000);
+        return  element.all(by.xpath("//div[contains(text(),'Select a theme from the menu above')]"));
+    };
+
+    this.consoleSessBGColor =function() {
+        browser.sleep(2000);
+        return  element.all(by.xpath("//div[@class='console__body']"));
+    };
+
+    this.consoleSessTextColor =function() {
+        browser.sleep(2000);
+        return  element.all(by.xpath("//div[@id='term_1']"));
+    };
+
 
 
 
@@ -161,11 +222,11 @@ var settingsTabPage = function() {
             }
             if(status == "ON")
             {
-                console.log("ELF ON")
+                console.log("Oval Button ON")
                 OvalBtn.click();
             }
             else if (status == "OFF"){
-                console.log("ELF OFF")
+                console.log("Oval Button OFF")
             }
 
         });

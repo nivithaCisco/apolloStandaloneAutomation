@@ -1,9 +1,9 @@
 
-var deviceTab = require('./../../POM/deviceTab.js');
+var deviceTab = require('./../../../../../office document/apollo Standalone/vikesh/Final/final/POM/deviceTab.js');
 var newSess = require('./../../POM/NewSessionPage.js');
 
 var settingsTabPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('../../data/data.js');
+var AppDataProvider = require('../../../../../office document/apollo Standalone/vikesh/Final/final/Data/data.js');
 var using = require('jasmine-data-provider');
 
 describe('TEST NEW SESSION TAB :::', function () {
@@ -24,9 +24,9 @@ describe('TEST NEW SESSION TAB :::', function () {
         settingsTabPage.settingsTab().click();
         settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
         expect(newSess.newTab("New Session").getText()).toEqual('New Session');
-     });
+    });
 
-    it('Verify all to field of Session login page is displayed', function ()
+    it('Verify all the field of Session login page is displayed', function ()
     {
         newSess.newTab("New Session").click();
         browser.wait(EC.visibilityOf(newSess.hostName()),5000);
@@ -37,7 +37,7 @@ describe('TEST NEW SESSION TAB :::', function () {
 
     });
 
-    it('Verify all to field of Session login page is displayed', function ()
+    it('Verify all the field of Session login page is displayed in the second step', function ()
     {   newSess.sshRadio().click();
         newSess.hostName().sendKeys('172.18.192.14');
         newSess.next().click();
@@ -62,12 +62,13 @@ describe('TEST NEW SESSION TAB :::', function () {
 
 
     using(AppDataProvider.newSession, function (data, description) {
-    it('Verify the session is Connected'+ description, function ()
-    {
-        newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
-        newSess.session_connected();
+        it('Verify the session is Connected'+ description, function ()
+        {
+            newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
+            newSess.session_connected();
 
-    });
+        });
+
         it('Verify the session is Closable', function ()
         {
 
@@ -83,14 +84,14 @@ describe('TEST NEW SESSION TAB :::', function () {
     });
 
     using(AppDataProvider.newSession, function (data, description) {
-    it('Verify the session Connection for multiple sessions'+ description, function ()
-    {
-        newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type,"ON");
-        newSess.session_connected();
+        it('Verify the session Connection for multiple sessions'+ description, function ()
+        {
+            newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type,"ON");
+            newSess.session_connected();
+
+        });
 
     });
-
-  });
 
     it('Verify the session Connection for multiple sessions', function ()
     {
@@ -123,9 +124,9 @@ describe('TEST NEW SESSION TAB :::', function () {
         expect(newSess. userName().isPresent()).toBe(true);
         newSess.closeTab();
 
-       });
+    });
 
-using(AppDataProvider.newSession, function (data, description) {
+    using(AppDataProvider.newSession, function (data, description) {
 
         it('Verify Device connection through Quick Connect '+ description, function ()
         {
@@ -162,7 +163,7 @@ using(AppDataProvider.newSession, function (data, description) {
             newSess. disConnectSession();
             newSess.session_dis_connected();
             newSess.closeTab();
-      });
+        });
 
 
 

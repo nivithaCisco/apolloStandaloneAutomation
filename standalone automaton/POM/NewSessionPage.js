@@ -2,10 +2,9 @@
 /**
  * Created by vikkanna on 2/12/2016.
  */
+var EC = protractor.ExpectedConditions;
 
 var NewSessionTab = function() {
-
-    var EC = protractor.ExpectedConditions;
 
     this.newTab= function(value) {
         browser.sleep(2000);
@@ -104,9 +103,9 @@ var NewSessionTab = function() {
         else if (conn_type == 'TELNET') {
             this.telnetRadio().click();
         }
-    if(ELF=="ON") {
-    this.next().click();
-    }
+        if(ELF=="ON") {
+            this.next().click();
+        }
         this.userName().sendKeys(user_name);
         this.password().sendKeys(pass);
 
@@ -142,13 +141,24 @@ var NewSessionTab = function() {
         browser.sleep(2000);
         return  element(by.xpath("//span[@class= 'tab-icon tab-icon--close icon-close']"));
     };
+//----------------
 
+    this.reConnSession= function() {
+        browser.sleep(2000);
+        return  element(by.xpath("//span[@ng-if='isDisconnected()']"));
+    };
 
+    this.logCapture= function(status) {
+        browser.sleep(2000);
+        return  element(by.xpath('//span[text()="'+status+'"]'));
+    };
+
+//---------------------
 
     this.disConnectSession= function() {
         this.disConnect().click();
         this.conDisconnect().click();
-      };
+    };
 
     this.closeTab= function() {
         this.crossClose().click();
@@ -195,26 +205,63 @@ var NewSessionTab = function() {
 
 
     this.handleAlert= function() {
-    var ele= this.aleConn();
-    this.aleConn().isPresent().then(function(present) {
+        var ele= this.aleConn();
+        this.aleConn().isPresent().then(function(present) {
 
-        if (present) {
+            if (present) {
 
-            browser.sleep(10000);
-            ele.click();
+                browser.sleep(10000);
+                ele.click();
 
-        }
-        else
-        {
+            }
+            else
+            {
 
-        }
+            }
 
-    });
+        });
 
     };
 
     this.getVersionTerminal=element(by.xpath('//div[contains(text(),"- Version: ")]'));
 
+//Added by Sonal
+    this.session_without_ip = function(conn_type) {
+        this.newTab("New Session").click();
+        if(conn_type == 'SSH') {
+            this.sshRadio().click();
+        }
+        else if (conn_type == 'TELNET') {
+            this.telnetRadio().click();
+        }
+        browser.sleep(9000);
+    };
+
+    this.session_without_username = function(host_name, pass, conn_type) {
+        this.newTab("New Session").click();
+        this.hostName().sendKeys(host_name);
+        if(conn_type == 'SSH') {
+            this.sshRadio().click();
+            this.next().click();
+            this.password().sendKeys(pass);
+            browser.sleep(9000);
+            //this.handleAlert();
+        }
+        //browser.sleep(9000);
+    };
+
+    this.session_without_password = function(host_name, user_name, conn_type) {
+        this.newTab("New Session").click();
+        this.hostName().sendKeys(host_name);
+        if(conn_type == 'SSH') {
+            this.sshRadio().click();
+            browser.sleep(9000);
+            this.next().click();
+            this.userName().sendKeys(user_name);
+            browser.sleep(9000);
+        }
+    };
+//Added by Sonal
 
 
 };

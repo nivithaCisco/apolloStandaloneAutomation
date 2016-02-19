@@ -1,8 +1,0 @@
-Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
-,FTX16148509,,172.18.194.56,ssh,22,no,good|suoer|checlk,
-,FTX1038Z10X,,172.18.192.14,ssh,22,yes,nivi and|checlk,
-TestDevice,,Bangalore,TestHost,ssh,22,no,checlk,
-Test,,,Test,ssh,22,no,xx|checlk,
-,FCH19107ACW,,172.18.194.79,ssh,22,no,,
-,,,hufdiur,ssh,22,no,,
-,,,dsdc,ssh,22,no,,
