@@ -1,12 +1,12 @@
 
-var deviceTab = require('./../../../../../office document/apollo Standalone/vikesh/Final/final/POM/deviceTab.js');
+var deviceTab = require('./../../POM/deviceTab.js');
 var newSess = require('./../../POM/NewSessionPage.js');
-
+var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var settingsTabPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('../../../../../office document/apollo Standalone/vikesh/Final/final/Data/data.js');
+var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 
-describe('TEST NEW SESSION TAB :::', function () {
+describe('New Session tab ', function () {
 
     var EC = protractor.ExpectedConditions;
 
@@ -18,6 +18,7 @@ describe('TEST NEW SESSION TAB :::', function () {
         browser.wait(EC.visibilityOf(element(by.css('span[class= "icon-plus"]'))),900000);
 
     });
+
 
     it('Verify whether New Session tab is displayed ', function ()
     {
@@ -64,7 +65,7 @@ describe('TEST NEW SESSION TAB :::', function () {
     using(AppDataProvider.newSession, function (data, description) {
         it('Verify the session is Connected'+ description, function ()
         {
-            newSess. createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
+            newSess.createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
             newSess.session_connected();
 
         });
@@ -103,12 +104,12 @@ describe('TEST NEW SESSION TAB :::', function () {
         newSess. disConnectSession();
         newSess.session_dis_connected();
         newSess.closeTab();
-        newSess.newTab("172.18.194.79").click();
-        newSess. disConnectSession();
-        newSess.session_dis_connected();
-        newSess.closeTab();
+	    newSess.newTab("172.18.194.79").click();
+       newSess. disConnectSession();
+       newSess.session_dis_connected();
+       newSess.closeTab();
+		
     });
-
 
 
     it('Verify Ip is updated to quick Connect form', function ()
@@ -129,9 +130,19 @@ describe('TEST NEW SESSION TAB :::', function () {
     using(AppDataProvider.newSession, function (data, description) {
 
         it('Verify Device connection through Quick Connect '+ description, function ()
-        {
-            newSess. quickConnect(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
-            newSess.session_connected();
+			{  
+			settingsTabPage.settingsTab().click();
+			
+			 if(data.conn_type == 'SSH') {
+				newSess.sshRadio().click();
+			}
+			else if (data.conn_type == 'TELNET') {
+				newSess.telnetRadio().click();
+			}
+			newSess.devicesTab().click();
+	
+			newSess.quickConnectSess(data.hostname_ip,data.user_name, data.password, data.conn_type,"ON");
+		    newSess.session_connected();
             newSess. disConnectSession();
             newSess.session_dis_connected();
             newSess.closeTab();
@@ -163,13 +174,13 @@ describe('TEST NEW SESSION TAB :::', function () {
             newSess. disConnectSession();
             newSess.session_dis_connected();
             newSess.closeTab();
+			newSess.deleteAllDevice();
+			
         });
 
 
-
+			
     });
-
-
 
 
     /*

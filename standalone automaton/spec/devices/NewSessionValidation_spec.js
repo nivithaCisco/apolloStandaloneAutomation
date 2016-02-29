@@ -3,38 +3,34 @@
  */
 
 
-var deviceTabMain = require('./../../POM/deviceTabMain.js');
-var DeviceTab = require('./../../POM/deviceTab.js');
-
-var AppDataProvider = require('./../../Data/data.js');
+var deviceTab = require('./../../POM/deviceTab.js');
 var newSess = require('./../../POM/NewSessionPage.js');
-var settingsTabPage = require('./../../POM/settingsPage.js');
-
-var EC = protractor.ExpectedConditions;
-
+var deviceTabMain = require('./../../POM/deviceTabMain.js');
+var AppDataProvider = require('../../data/data.js');
 var using = require('jasmine-data-provider');
 
-describe('NEW SESSION TAB Negative :::', function () {
-    beforeEach(function() {
-        browser.sleep(10000);
+describe('Test Terminal Connections', function () {
 
-    });
 
-    it('Check if Enhanced Login Flow is ON ', function ()
-    {
+    var EC = protractor.ExpectedConditions;
+
+    it('test ', function () {
+        browser.sleep(5000);
         browser.ignoreSynchronization = true;
+        var EC = protractor.ExpectedConditions;
+        browser.wait(EC.visibilityOf(element(by.css('span[class= "icon-plus"]'))), 900000);
 
-        settingsTabPage.settingsTab().click();
-        settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
-        DeviceTab.deviceTab.click();
     });
 
 
-        using(AppDataProvider.newSessionVal, function (data, description) {
+       using(AppDataProvider.newSessionVal, function (data, description) {
             it('Verify the session is Connected - ' + description, function () {
+				
                 newSess.createNewSession(data.hostname_ip, data.user_name, data.password, data.conn_type, "ON");
                 newSess.session_connected();
                 newSess.closeTab();
+                //deviceTabMain.deleteDevice();
+
             });
         });
 
@@ -46,8 +42,9 @@ describe('NEW SESSION TAB Negative :::', function () {
              });
 
         });
+
         using(AppDataProvider.emptyUsername, function (data, description) {
-            it('Verify Next is disable for empty Username - SSH' + description, function () {
+            it('Verify Next is disable for empty Username - ' + description, function () {
 
                 newSess.session_without_username(data.hostname_ip, data.password, data.conn_type);
                 expect(newSess.connect().isEnabled()).toBe(false);
@@ -55,7 +52,8 @@ describe('NEW SESSION TAB Negative :::', function () {
             });
 
         });
-        using(AppDataProvider.emptyPassword, function (data, description) {
+
+       using(AppDataProvider.emptyPassword, function (data, description) {
             it('Verify Next is disable for empty Password - SSH' + description, function () {
 
                 newSess.session_without_password(data.hostname_ip, data.user_name, data.conn_type);
@@ -65,6 +63,55 @@ describe('NEW SESSION TAB Negative :::', function () {
 
         });
 
+        using(AppDataProvider.emptyPort, function (data, description) {
+            it('Verify Next is disable for empty Port ' + description, function () {
 
+                newSess.session_without_port(data.hostname_ip, data.conn_type);
+                expect(newSess.next().isEnabled()).toBe(false);
+                newSess.closeTab();
+            });
+
+        });
+
+        using(AppDataProvider.invalidIP, function (data, description) {
+            it('Verify Next is disable for Invalid IP ' + description, function () {
+
+                newSess.session_with_invalid_ip(data.hostname_ip, data.conn_type);
+                expect(newSess.invalidIP().isPresent()).toBe(true);
+                expect(newSess.next().isEnabled()).toBe(false);
+                newSess.closeTab();
+            });
+
+        });
+
+
+        using(AppDataProvider.invalidUsernamePassword, function (data, description) {
+            it('Verify Session Disconnected pop up is displayed for SSH - ' + description, function () {
+
+                newSess.session_with_invalid_username_password (data.hostname_ip, data.user_name, data.password, data.conn_type);
+                newSess.session_dis_connected ();
+                newSess.closeTab();
+            });
+
+        });
+
+
+        using(AppDataProvider.invalidPort, function (data, description) {
+            it('Verify Next is disable for invalid Port ' + description, function () {
+
+                newSess.session_with_invalid_port(data.hostname_ip, data.conn_type, data.port);
+                expect(newSess.next().isEnabled()).toBe(false);
+                newSess.closeTab();
+				newSess.deleteAllDevice();
+            });
+
+        });
+
+    /*it('wait', function ()
+     {
+
+     browser.sleep(3000);
+     });
+     */
 
 });

@@ -8,7 +8,7 @@ var AppDataProvider = function() {
     this.newSession = {
         "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH"},
         "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
-        "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
+       "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
 
     };
 
@@ -66,30 +66,59 @@ var AppDataProvider = function() {
 
 //---------------Vikesh-------------------------
 //-----------sonal----------
+    
     //SSH & TELNET connection
 
     this.newSessionVal = {
-        "SSH": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "IP Address": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "Short Name": {hostname_ip: "swtg-1811", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "FQDN": {hostname_ip: "swtg-1811.cisco.com", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "Router": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "ASA": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "Switch": {hostname_ip: " 172.18.202.56", user_name: "lab", password:"lab",conn_type: "SSH"},
+
         //"TELNET": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "TELNET"},
 
     };
 
+    this.emptyPort = {
+        "SSH": {hostname_ip: "172.18.192.14", conn_type: "SSH"},
+        "TELNET": {hostname_ip: "172.18.192.14", conn_type: "TELNET"},
+    };
+
+    this.invalidIP = {
+        "SSH": {hostname_ip: "172 18.192.14", conn_type: "SSH"},
+        "TELNET": {hostname_ip: "172 18.192.14", conn_type: "TELNET"},
+    };
+
     this.emptyIP = {
         "SSH": {conn_type: "SSH"},
-        //"TELNET": {conn_type: "TELNET"},
+        "TELNET": {conn_type: "TELNET"},
 
     };
 
     this.emptyUsername = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", password: "lab", conn_type: "SSH"},
-        //"172.18.192.14": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "SSH"},
-        //"172.18.192.14": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "TELNET"},
+        "SSH": {hostname_ip: "172.18.194.56", password: "lab", conn_type: "SSH"},
+        //"TELNET": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "TELNET"},
     };
 
     this.emptyPassword = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", conn_type: "SSH"},
-        //"172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password: "lab", conn_type: "SSH"},
+        "SSH": {hostname_ip: "172.18.194.56", user_name: "lab", conn_type: "SSH"},
+        //"TELNET": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "TELNET"},
     };
+
+    this.invalidUsernamePassword = {
+        "Invalid Username": {hostname_ip: "172.18.194.56", user_name: "abc", password: "lab", conn_type: "SSH"},
+        "Invalid Password": {hostname_ip: "172.18.194.56", user_name: "lab", password: "abc", conn_type: "SSH"},
+        //"TELNET": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "TELNET"},
+    };
+
+    this.invalidPort = {
+        "SSH": {hostname_ip: "172.18.194.56", conn_type: "SSH", port: "abc"},
+        "TELNET": {hostname_ip: "172.18.192.14", conn_type: "TELNET", port: "xyz"},
+    };
+
+
 
 //-----------------sonal-----------------
 // nivitha

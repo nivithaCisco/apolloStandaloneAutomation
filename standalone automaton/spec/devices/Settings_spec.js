@@ -2,13 +2,14 @@
  * Created by vikkanna on 2/15/2016.
  */
 
-var deviceTab = require('./../../../../../office document/apollo Standalone/vikesh/Final/final/POM/deviceTab.js');
+var deviceTab = require('./../../POM/deviceTab.js');
+var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var newSess = require('./../../POM/NewSessionPage.js');
 var settPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('../../../../../office document/apollo Standalone/vikesh/Final/final/Data/data.js');
+var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 
-describe('Test Settings Tab :', function () {
+describe('Settings Tab :', function () {
 
     var EC = protractor.ExpectedConditions;
     it('test ', function ()
@@ -29,7 +30,7 @@ describe('Test Settings Tab :', function () {
     });
 
 
-    it('Verify all to field of Settings tab General section is present', function ()
+    it('Verify all field of Settings tab General section is present', function ()
     {
         expect(settPage.scrollBuffer().isPresent()).toBe(true);
         expect(settPage.sshRadio().isPresent()).toBe(true);
@@ -43,11 +44,11 @@ describe('Test Settings Tab :', function () {
         expect(settPage.consoleSelBeh().isPresent()).toBe(true);
         expect(settPage.OvalButton('Enhanced Login Flow').isPresent()).toBe(true);
         expect(settPage.OvalButton('Reconnect with Credentials').isPresent()).toBe(true);
-        expect(settPage.OvalButton('Automatically Enable Session Capture').isPresent()).toBe(true);
+        expect(settPage.OvalButton('Automatically Enable Session Logging').isPresent()).toBe(true);
         expect(settPage.logDir().isPresent()).toBe(true);
     });
 
-    it('Verify all to field of Settings tab Proxy section is present', function ()
+    it('Verify all field of Settings tab Proxy section is present', function ()
     {
 
         expect(settPage.protocolInp().isPresent()).toBe(true);
@@ -232,7 +233,14 @@ describe('Test Settings Tab :', function () {
 
     using(AppDataProvider.reconnWithCred, function (data, description) {
     it('Verify Reconnect with credentials option ON', function ()
-    {   settPage.settingsTab().click();
+    { 
+	settPage.settingsTab().click();
+	 if(data.conn_type == 'SSH') {
+				newSess.sshRadio().click();
+			}
+			else if (data.conn_type == 'TELNET') {
+				newSess.telnetRadio().click();
+			}
         settPage.handleOvalButton("Enhanced Login Flow","ON");
         settPage.handleOvalButton("Reconnect with Credentials","ON");
         newSess.createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
@@ -248,6 +256,12 @@ describe('Test Settings Tab :', function () {
   using(AppDataProvider.reconnWithCred, function (data, description) {
     it('Verify Reconnect with credentials option OFF', function ()
     {    settPage.settingsTab().click();
+	 if(data.conn_type == 'SSH') {
+				newSess.sshRadio().click();
+			}
+			else if (data.conn_type == 'TELNET') {
+				newSess.telnetRadio().click();
+			}
         settPage.handleOvalButton("Enhanced Login Flow","ON");
         settPage.handleOvalButton("Reconnect with Credentials","OFF");
         newSess.createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
@@ -265,37 +279,55 @@ describe('Test Settings Tab :', function () {
 
 
 
-
     using(AppDataProvider.reconnWithCred, function (data, description) {
         it('Verify Auto Enable Session Capture ON', function ()
         {   settPage.settingsTab().click();
-            settPage.handleOvalButton("Automatically Enable Session Capture","ON");
+		 if(data.conn_type == 'SSH') {
+				newSess.sshRadio().click();
+			}
+			else if (data.conn_type == 'TELNET') {
+				newSess.telnetRadio().click();
+			}
+            settPage.handleOvalButton("Automatically Enable Session Logging","ON");
             newSess.createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
             expect(newSess.logCapture("Logging: On").isPresent()).toBe(true);
             newSess.disConnectSession();
             newSess.closeTab();
 
         });
+		  });
 
 
+ using(AppDataProvider.reconnWithCred, function (data, description) {
         it('Verify Auto Enable Session Capture OFF', function ()
         {
             settPage.settingsTab().click();
-            settPage.handleOvalButton("Automatically Enable Session Capture","OFF")
+			 if(data.conn_type == 'SSH') {
+				newSess.sshRadio().click();
+			}
+			else if (data.conn_type == 'TELNET') {
+				newSess.telnetRadio().click();
+			}
+            settPage.handleOvalButton("Automatically Enable Session Logging","OFF")
             newSess.createNewSession(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
             expect(newSess.logCapture("Logging: Off").isPresent()).toBe(true);
             newSess.disConnectSession();
             newSess.closeTab();
+			newSess.deleteAllDevice();
             settPage.settingsTab().click();
         });
 
     });
 
-
+/*
     using(AppDataProvider.consoleColor, function (data, description) {
 
         it('Verify Console text and color for various themes in settings page', function ()
-        {
+        {   
+		
+		//removeit
+		  settPage.settingsTab().click();
+		  //removeit
             browser.sleep(2000);
             settPage.theme().sendKeys("");
                settPage.theme().sendKeys(data.themeType);
@@ -315,9 +347,15 @@ describe('Test Settings Tab :', function () {
 
 
     });
-
+	*/
 
 /*
+    while(newSess.selectAll().isPresent()== true)
+    {  
+        deviceTabMain.deleteDevice();
+    }
+
+
     using(AppDataProvider.consoleSessColor, function (data, description) {
     it('Verify Console text and color for various themes in console connection page', function ()
     {

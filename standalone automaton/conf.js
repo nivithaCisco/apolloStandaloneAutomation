@@ -36,7 +36,10 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-    specs:[
+
+    
+	specs:[
+	/*
 //All these specs are based on predefined data
         './spec/devices/SelectAll_spec.js',
         './spec/devices/Filter_spec.js',
@@ -49,10 +52,11 @@ exports.config = {
         './spec/devices/addDevice_spec.js',
         './spec/devices/QuickRecent_spec.js',
         './spec/devices/Tag_spec.js',
+		*/
         './spec/devices/NewSessionValidation_spec.js',
-        './spec/devices/NewSession_spec.js',
-        './spec/devices/Settings_spec.js'
-
+		'./spec/devices/NewSession_spec.js',
+		'./spec/devices/Settings_spec.js'
+		
 
     ],
 
