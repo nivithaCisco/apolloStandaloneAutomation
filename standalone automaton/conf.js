@@ -39,7 +39,7 @@ exports.config = {
 
     
 	specs:[
-	/*
+
 //All these specs are based on predefined data
         './spec/devices/SelectAll_spec.js',
         './spec/devices/Filter_spec.js',
@@ -48,11 +48,11 @@ exports.config = {
 //All these specs are based on non predefined data
 
         './spec/devices/Landing_spec.js',
-        './spec/devices/download_spec.js',
-        './spec/devices/addDevice_spec.js',
+       // './spec/devices/trail.js',
+       './spec/devices/addDevice_spec.js',
         './spec/devices/QuickRecent_spec.js',
-        './spec/devices/Tag_spec.js',
-		*/
+       './spec/devices/Tag_spec.js',
+
         './spec/devices/NewSessionValidation_spec.js',
 		'./spec/devices/NewSession_spec.js',
 		'./spec/devices/Settings_spec.js'

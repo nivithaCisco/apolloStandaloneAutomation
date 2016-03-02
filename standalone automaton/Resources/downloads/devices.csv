@@ -1,0 +1,6 @@
+Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
+Dont Delete,,Bangalore,TestHost,ssh,22,no,good,
+dont Delete,,U.S.A,Test,ssh,22,no,good,
+Dont delete,,,hufdiur,ssh,22,yes,,
+dont Delete,,vellore,dsdc,ssh,22,yes,nbj,mnkn
+,FTX16148509,,172.18.194.56,telnet,23,no,,

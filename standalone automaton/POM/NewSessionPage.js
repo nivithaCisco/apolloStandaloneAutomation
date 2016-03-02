@@ -103,7 +103,7 @@ var NewSessionTab = function() {
     }
 
     this.quickConnect= function() {
-		//browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='quick-connect']"))),10000);
+		browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='quick-connect']"))),10000);
         browser.sleep(2000);
         return element(by.xpath("//div[@class='quick-connect']"));
     }

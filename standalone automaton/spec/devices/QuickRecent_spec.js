@@ -30,7 +30,7 @@ describe('Recent + Quick', function () {
 
         it('Verify if device gets added through Quick Connection '+ description, function ()
         {
-            newSess. quickConnect(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
+            newSess.quickConnectSess(data.hostname_ip,data.user_name, data.password, data.conn_type, "ON");
           // newSess.session_connected();
 
             browser.wait(EC.visibilityOf(newSess.getVersionTerminal),90000);
@@ -163,6 +163,18 @@ describe('Recent + Quick', function () {
             });
         });
 
+
+        it('Delete Device - ' + description, function () {
+            browser.sleep(3000);
+            deviceTabMain.setSearch(data.hostname_ip);
+            browser.sleep(10000);
+            browser.wait((deviceTabMain.isLoading).isPresent());
+            deviceTabMain.deleteDevice();
+            deviceTabMain.removeSearch();
+            expect(element.all(by.className('gritter-title')).getText()).toContain('Delete Device');
+
+
+        });
 
 
 
