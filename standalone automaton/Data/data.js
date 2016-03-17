@@ -5,13 +5,126 @@ var AppDataProvider = function() {
 
 
     //---------------Vikesh-------------------------
-    this.newSession = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH"},
-        "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
-       "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
-
+    //--------------------------------------
+    this.unResponsivePort = {
+        "SSH": {hostname_ip: "172.18.194.56", conn_type: "SSH", port: "2"},
+        "TELNET": {hostname_ip: "172.18.192.14", conn_type: "TELNET", port: "55"},
     };
 
+    this.unResponsiveHost = {
+        "SSH": {hostname_ip: "WrongHost", conn_type: "SSH", port: "22"},
+        "TELNET": {hostname_ip: "WrongTelNetIP", conn_type: "TELNET", port: "23"},
+    };
+
+
+    this.SSHDLinuxMac = {
+       // "10.106.2.119 sshd on linux": {hostname_ip: "10.106.2.119", user_name: "ftpuser", password:"ftp123", conn_type: "SSH"},
+
+       "172.18.202.56 TELNET On Switch": {hostname_ip: "172.18.202.56", user_name: "lab", password:"lab",conn_type: "TELNET"},
+       // "172.18.194.55 TELNET On Router": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab",conn_type: "TELNET"},
+        // "172.18.194.55 TELNET On ASA Not working": {hostname_ip: "172.18.194.55", user_name: "lab", password:"lab",conn_type: "TELNET"},
+  };
+//dont edit
+    this.addDevice = {
+        'Mandate Hostanme': {
+            Mandatory: true,
+            deviceName: "",
+            ipAddress: "172.18.192.14",
+            port:"22",
+            location: "",
+            connectionType: "SSH",
+            inputTag: "",
+            Manufacture:"Cisco",
+            serialNumber: "",
+            notes: "",
+            user_name: "lab",
+            password:"lab"
+        },
+    };
+
+    this.AddDeviceTableView = {
+        'Mandate Hostanme': {
+            Mandatory: true,
+            deviceName: "swtg-891a.cisco.com",
+            ipAddress: "swtg-891a.cisco.com",
+            port:"22",
+            location: "",
+            version: "",
+            connectionType: "SSH",
+            inputTag: "",
+            Manufacture:"Cisco",
+            serialNumber: "",
+            notes: "",
+            user_name: "lab",
+            password:"lab",
+            dev_num: 1
+        },
+        'All feilds': {
+            Mandatory: false,
+            deviceName: "TestDeviceCisco",
+            ipAddress: "172.18.194.79",
+            port:"22",
+            location: "BGL-25-1",
+            version: "",
+            connectionType: "SSH",
+            inputTag: "testCsico",
+            serialNumber: "FNS13020QYU",
+            Manufacture:"Cisco",
+            notes: "This is for testing",
+            user_name: "lab",
+            password:"lab",
+            dev_num: 2
+        },
+        'Mandate': {
+            Mandatory: true,
+            deviceName: "172.18.194.56",
+            ipAddress: "172.18.194.56",
+            port:"22",
+            location: "",
+            version: "",
+            connectionType: "SSH",
+            inputTag: "",
+            Manufacture:"Cisco",
+            serialNumber: "",
+            notes: "",
+            user_name: "lab",
+            password:"lab",
+            dev_num: 3
+        }
+
+
+
+    }
+//------------------------------------------------
+    this.moreThanTenSessconn = {
+        "172.18.192.14 one": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 two": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 three": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 four": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 five": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 six": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 seven": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 Egiht": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 Nine": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 Ten": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.192.14 eleven": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+  };
+
+//Dont Change
+    this.newSession = {
+        "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH"},
+
+      "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
+
+    };
+    //dependant on newsesson
+    this.mulSessDisconn = {
+
+        "172.18.192.14": {hostname_ip: "172.18.192.14", user_name: "lab", password:"lab",conn_type: "SSH"},
+        "172.18.194.79": {hostname_ip: "172.18.194.79", user_name: "lab", password:"lab",conn_type: "SSH"},
+       "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH"},
+    };
 
     this.scrollBuffer = {
         "ScrollBuffer": {wrongOne: "99", wrongTwo: "50001", CorrectOne: "101", CorrectTwo: "50000"},
@@ -113,16 +226,32 @@ var AppDataProvider = function() {
         //"TELNET": {hostname_ip: "172.18.192.14", password: "lab", conn_type: "TELNET"},
     };
 
-    this.invalidPort = {
+     this.invalidPort = {
         "SSH": {hostname_ip: "172.18.194.56", conn_type: "SSH", port: "abc"},
         "TELNET": {hostname_ip: "172.18.192.14", conn_type: "TELNET", port: "xyz"},
     };
 
 
 
+
 //-----------------sonal-----------------
 // nivitha
 //--------------------------------------------------------------------------------------------------
+
+
+
+
+
+    this.ExportDataProvider = {
+        "IP/Hostname": {type:"text",dropdown: "IP / Hostname", selector: by.xpath('//smart-card2/div/div/div/div/div[2]/div/div[1]/span[2]'),filename:"./Resources/downloads/exportIpaddress.csv"},
+        'Device Name ': {type:"text",dropdown: "Device Name", selector: by.binding('card.name || card.hostname'),filename:"./Resources/downloads/exportDevice.csv"},
+        "Location ": {type:"text",dropdown: "Location", selector: by.binding('group.name'),filename:"./Resources/downloads/exportLocation"},
+        "Recent Acees": {type:"text",dropdown: "Recently Accessed", selector: by.binding('group.name'),filename:"./Resources/downloads/exportRecent.csv"}
+
+
+    };
+
+
     this.quickSession = {
         "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH",port:"22"}
     };
@@ -134,14 +263,6 @@ var AppDataProvider = function() {
 
     };
 
-    this.ExportDataProvider = {
-        "IP/Hostname": {type:"text",dropdown: "IP / Hostname", selector: by.xpath('//smart-card2/div/div/div/div/div[2]/div/div[1]/span[2]'),filename:"./Resources/downloads/exportIpaddress.csv"},
-        'Device Name ': {type:"text",dropdown: "Device Name", selector: by.binding('card.name || card.hostname'),filename:"./Resources/downloads/exportDevice.csv"},
-        "Location ": {type:"text",dropdown: "Location", selector: by.binding('group.name'),filename:"./Resources/downloads/exportLocation"},
-        "Recent Acees": {type:"text",dropdown: "Recently Accessed", selector: by.binding('group.name'),filename:"./Resources/downloads/exportRecent.csv"}
-
-
-    };
     this.filterTagCheckerdataProvider = {
 
 
@@ -212,8 +333,7 @@ var AppDataProvider = function() {
             notes: "",
             user_name: "lab",
             password:"lab"
-        }
-        ,
+        },
         'All feilds': {
             Mandatory: false,
             deviceName: "TestDeviceCisco",

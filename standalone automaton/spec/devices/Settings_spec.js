@@ -6,7 +6,7 @@ var deviceTab = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thurs
 var deviceTabMain = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTabMain.js');
 var newSess = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/NewSessionPage.js');
 var settPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/Data/data.js');
+var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 
 describe('Settings Tab :', function () {

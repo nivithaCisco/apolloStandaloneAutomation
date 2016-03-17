@@ -6,7 +6,7 @@ var deviceTab = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thurs
 var newSess = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/NewSessionPage.js');
 var deviceTabMain = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTabMain.js');
 var settingsTabPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/Data/data.js');
+var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 var tableViewPage = require('./../../POM/tableView_page.js');
 
