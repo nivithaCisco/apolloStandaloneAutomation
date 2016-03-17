@@ -53,7 +53,7 @@ describe('Sorting', function () {
                                 (function (j, devicesInCurrentPage) {
 
                                     console.log("page index :" + pageIndex + " dev no :" + j);
-
+                                    DeviceTab.gritterNotifyClose();
                                     element.all(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).get(j-1).click();
 
                                     if(filterValue!= "No Tags") {

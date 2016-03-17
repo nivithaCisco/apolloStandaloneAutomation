@@ -10,6 +10,9 @@ var using = require('jasmine-data-provider');
 
 
 describe('Sorting', function () {
+    beforeEach(function() {
+        browser.sleep(10000);
+    });
 
     using(AppDataProvider.sortCheckerDataProvider, function (data, description) {
 

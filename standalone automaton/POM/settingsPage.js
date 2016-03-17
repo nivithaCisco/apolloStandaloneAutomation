@@ -171,6 +171,7 @@ var settingsTabPage = function() {
         return  element(by.binding("::'_SAMasterPasswordTitle_' | i18n"));
     };
 
+
     this.masterPassCheck= function() {
 		//browser.wait(EC.visibilityOf(element(by.xpath('//label[@title= "Master Password"]/parent::*//span[@class="checkbox__input"]'))),10000);
         browser.sleep(2000);

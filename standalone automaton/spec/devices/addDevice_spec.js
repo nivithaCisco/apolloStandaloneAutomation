@@ -14,6 +14,8 @@ var using = require('jasmine-data-provider');
 describe('Add Device tests', function () {
     beforeEach(function() {
         browser.sleep(10000);
+        DeviceTab.gritterNotifyClose();
+
     });
 
     it('Check if Enhanced Login Flow is ON ', function ()
@@ -72,7 +74,7 @@ describe('Add Device tests', function () {
 
 
 
-        it('Verify Connection through SmartCard'+ description, function () {
+        it('Verify Connection through SmartCard '+ description, function () {
             deviceTabMain.cardConnect();
             browser.sleep(10000);
             var name=data.deviceName;

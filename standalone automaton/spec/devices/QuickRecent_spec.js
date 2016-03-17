@@ -48,7 +48,7 @@ describe('Recent + Quick', function () {
             newSess.closeTab();
             browser.sleep(10000);
 
-            deviceTabMain.setSearch(data.hostname_ip);
+            deviceTabMain.setSearch(data.hostname_ip,data.port);
             browser.sleep(10000);
             browser.wait((deviceTabMain.isLoading).isPresent());
 
@@ -166,7 +166,7 @@ describe('Recent + Quick', function () {
 
         it('Delete Device - ' + description, function () {
             browser.sleep(3000);
-            deviceTabMain.setSearch(data.hostname_ip);
+            deviceTabMain.setSearch(data.hostname_ip,data.port);
             browser.sleep(10000);
             browser.wait((deviceTabMain.isLoading).isPresent());
             deviceTabMain.deleteDevice();

@@ -3,26 +3,116 @@
  * Created by vikkanna on 2/12/2016.
  */
  var deviceTabMain = require('./deviceTabMain.js');
- 
+//var tableViewPage = require('./tableView_page.js');
+
 var EC = protractor.ExpectedConditions;
 
 var NewSessionTab = function() {
 	 //------------
-	
+    this.connErrorMsg= function() {
+         browser.sleep(2000);
+        return  element(by.xpath("//div[@class='alert__message ng-binding']"));
+    };
+
+
+    this.connectTerminal= function(num) {
+        browser.sleep(2000);
+        return  element(by.xpath("//div[@class='cards cards--3col']/div[1]//span[@class= 'icon-terminalalt']"));
+    };
+
+    this.previous= function(num) {
+        browser.sleep(2000);
+        return  element(by.binding("::'_Previous_' | i18n"));
+    };
+
+
+
+    this.addDevice = function(host_name, port, deviceName,location,  Manufacture,conn_type, inputTag, notes ) {
+        deviceTabMain.getIconPlus();
+        browser.sleep(2000);
+        deviceTabMain.setHostName(host_name);
+        browser.sleep(2000);
+        deviceTabMain.setPort(port);
+        browser.sleep(2000);
+
+            deviceTabMain.setDevName(deviceName);
+            browser.sleep(2000);
+            deviceTabMain.setLocation(location);
+            browser.sleep(2000);
+            deviceTabMain.setConnType(conn_type);
+           browser.sleep(2000);
+        deviceTabMain.getSave();
+        console.log("Device Added");
+    };
+
+    this.recentSession= function(IP) {
+        browser.sleep(2000);
+        return  element(by.xpath('//span[@class="notification__body ng-binding"][text()="' +IP+'"]'));
+    };
+
+    this.TabConnStatus = function(IP) {
+        browser.sleep(2000);
+        return  element(by.xpath('//span[@class="tab-icon tab-icon--status icon-circle text-success"]'));
+    };
+
+//multiple sessions
+    this.mulSelectTab = function(IP) {
+        browser.sleep(2000);
+        return  element(by.xpath('//a[@class= "ng-binding"]//tab-heading[@title= "'+IP+'"]'));
+    };
+
+    this.mulCrossClose = function(IP) {
+        browser.sleep(2000);
+        return  element(by.xpath('//a[@class= "ng-binding"]//tab-heading[@title= "'+IP+'"]//span[@class="tab-icon tab-icon--close icon-close"]'));
+    };
+    this.mulTabConnStatus = function(IP) {
+        browser.sleep(2000);
+        return element(by.xpath('//a[@class= "ng-binding"]//tab-heading[@title= "'+IP+'"]//span[@class="tab-icon tab-icon--status icon-circle text-success"]'));
+    };
+
+    this.mulDisConnect= function() {
+        //browser.wait(EC.visibilityOf(element(by.xpath("//span[@class='icon-power']"))),10000);
+        browser.sleep(2000);
+        return element(by.xpath('//div[@class="tab-pane ng-scope active"]//span[@class="icon-power"]'));
+    };
+    this.mulReconn= function() {
+        //browser.wait(EC.visibilityOf(element(by.xpath("//span[@class='icon-power']"))),10000);
+        browser.sleep(2000);
+        return element(by.xpath('//div[@class="tab-pane ng-scope active"]//button[@class="button button--primary button--small ng-binding"]'));
+    };
+
+    this.mulDisConnectSession= function() {
+        this.mulDisConnect().click();
+        this.conDisconnect().click();
+    };
+
+    this.mulcloseTab= function(IP) {
+        this.mulCrossClose(IP).click();
+        this.conDisconnect().click();
+    };
+
+
+    //-----------
     this.devicesTab= function() {
 		 //browser.wait(EC.visibilityOf(element(by.binding("::'_Devices_' | i18n"))),10000);
         browser.sleep(2000);
         return  element(by.binding("::'_Devices_' | i18n"));
     };
-	
-	
+
+
+
    this.deleteAllDevice= function() {
 	  this.selectAll().isPresent().then(function(present) {
 		
      	if(present == true)
 		{
 			browser.sleep(2000);
-			 deviceTabMain.deleteDevice();
+            deviceTabMain.selectDevice();
+            // browser.wait(element(by.className('loader loader--app-loading ng-hide')).isPresent());
+
+            deviceTabMain.bulkAction();
+            deviceTabMain.deleteOption();
+            deviceTabMain.deleteButton();
 			
 		}
 		
@@ -30,13 +120,12 @@ var NewSessionTab = function() {
 	
         });
     };
-	 	 
-	 
-	 //-----------
-	
-	
-	
-	this.selectAll= function() {
+
+
+
+
+
+    this.selectAll= function() {
 		//browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='smart-toolbar__actions']//span[@class='checkbox__input']"))),10000);
         browser.sleep(2000);
         return  element(by.xpath("//div[@class='smart-toolbar__actions']//span[@class='checkbox__input']"));
@@ -103,7 +192,7 @@ var NewSessionTab = function() {
     }
 
     this.quickConnect= function() {
-		browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='quick-connect']"))),10000);
+		//browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='quick-connect']"))),10000);
         browser.sleep(2000);
         return element(by.xpath("//div[@class='quick-connect']"));
     }
@@ -112,7 +201,9 @@ var NewSessionTab = function() {
     this.connect= function() {
 		//browser.wait(EC.visibilityOf(element(by.binding("::'_Connect_' | i18n"))),10000);
         browser.sleep(2000);
-        return  element(by.binding("::'_Connect_' | i18n"));
+
+        return  element(by.xpath("//button[@class='button button--primary button--small ng-binding']"));
+       //return  element(by.binding("::'_Connect_' | i18n"));
     };
 
 
@@ -248,7 +339,8 @@ var NewSessionTab = function() {
 
 
     this.quickConnectSess = function(host_name, user_name, pass, conn_type, ELF)  {
-      
+       //have to remove this
+        this.quickConnText().clear();
         this.quickConnText().sendKeys(host_name);
 		
 		
@@ -276,7 +368,8 @@ var NewSessionTab = function() {
     this.aleConn= function() {
 		//browser.wait(EC.visibilityOf(element(by.binding("::'_Connect_' | i18n"))),10000);
         browser.sleep(3000);
-        return element(by.binding("::'_Connect_' | i18n"));
+        //return element(by.binding("::'_Connect_' | i18n"));
+        return  element(by.xpath("//button[@class='button button--primary button--small ng-binding']"));
     };
     this.alertCancel= function() {
 		//browser.wait(EC.visibilityOf(element(by.binding("::'_Cancel_' | i18n"))),10000);
@@ -350,6 +443,7 @@ var NewSessionTab = function() {
                 browser.sleep(9000);
             }
         };
+
     this.session_with_shortname = function(host_name, user_name, password, conn_type) {
         this.newTab("New Session").click();
         this.hostName().sendKeys(host_name);

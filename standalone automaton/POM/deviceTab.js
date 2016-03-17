@@ -46,9 +46,27 @@ var DevicePage = function() {
 
     this.switchInput=element.all(by.xpath('//span[@class="switch__input"]/span'));
 
+var gritterClose=  element.all(by.xpath('//a[@class="gritter-close"]'));
 
+    this.gritterNotifyClose = function()
+    {
+        element(by.xpath('//a[@class="gritter-close"]')).isPresent().then(function (selected) {
 
+            console.log(selected)
+            if (selected) {
 
+                gritterClose.then(function (rows) {
+                    for (var i = 0; i < rows.length; i++) {
+                        browser.executeScript("arguments[0].click();", gritterClose.get(i).getWebElement());
+                    }
+                });
+            }
+            else {
+                console.log("disabled")
+
+            }
+        });
+    }
 
 
 
@@ -59,24 +77,26 @@ var DevicePage = function() {
     this.exportDevice=element(by.xpath('//a[@tooltip="Export Devices"]'));
     this.exportDeviceIcon=element(by.xpath('//a[@tooltip="Export Devices"]/span'));
 
-    this.Download = function (data){
+    this.Download = function (type,filename,autoIt){
 
-        var filename='./Resources/downloads/devices.csv';
-        var batFile='../Resources/AutoItScripts/delete.bat';
-        var autoIt='../Resources/AutoItScripts/DownloadHandler.exe';
+        if(type=="Updated Date")
+        {
+            var batFile='../Resources/AutoItScripts/delete.bat';
 
-        exec(path.resolve(__dirname, batFile) , function(err, data) {
-            console.log(err)
-            console.log(data.toString());
-        })
+            exec(path.resolve(__dirname, batFile) , function(err, data) {
+                console.log("The error "+err)
+                console.log(data.toString());
+            })
+        }
+
+
 
         browser.driver.wait(function () {
             return !fs.existsSync(filename);
         }, 40000)
 
         var downloadFile =function(){
-
-            exec(path.resolve(__dirname, autoIt) , function(err, data) {
+            exec(path.resolve(__dirname,autoIt) , function(err, data) {
                 console.log(err)
                 console.log(data.toString());
             });
@@ -90,17 +110,7 @@ var DevicePage = function() {
         browser.sleep(10000);
             browser.driver.wait(function () {
                 return fs.existsSync(filename);
-            }, 900000).then(function () {
-                browser.sleep(10000);
-                expect(fs.readFileSync(filename, {encoding: 'utf8'})).toEqual(data);
-                browser.sleep(10000);
-
-            });
-
-
-
-
-
+            }, 900000)
             });// ends
     }
 
@@ -182,6 +192,7 @@ var DevicePage = function() {
         element.all(by.css('button[ng-click="$close(); closeInputTags();"]')).get(1).click();
     }
 
+    var nextPageScroll = element(by.css('a[ng-click="smartPager.loadNextPage(); scrollUp()"]'));
 
     this.nextDevicePage = function()
     {
@@ -190,7 +201,7 @@ var DevicePage = function() {
             console.log(selected)
             if (selected==null) {
                 console.log('is Enabled');
-                element(by.css('a[ng-click="pager.loadNextPage(); scrollUp()"]')).click();
+                element(by.css('a[ng-click="smartPager.loadNextPage(); scrollUp()"]')).click();
             }
             else {
                 console.log("disabled")
@@ -285,7 +296,6 @@ var DevicePage = function() {
     this.sortDropDown = element(by.id('sortby'));
     this.sortDropDownOption = element.all(by.xpath("//select[@id='sortby']/option"));
 
-    var nextPageScroll = element(by.css('a[ng-click="pager.loadNextPage(); scrollUp()"]'));
     this.sortToggleButton = element(by.css('a[ng-click="toggleSortDir()"]'));
     this.sortImage= element(by.xpath('//a[@ng-click="toggleSortDir()"]/span')) ;
 
@@ -431,7 +441,7 @@ var DevicePage = function() {
                 console.log(selected)
                 if (selected==null) {
                     console.log('is Enabled');
-                    element(by.css('a[ng-click="pager.loadNextPage(); scrollUp()"]')).click();
+                    element(by.css('a[ng-click="smartPager.loadNextPage(); scrollUp()"]')).click();
                 }
                 else {
                     console.log("disabled")

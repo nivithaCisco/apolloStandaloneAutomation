@@ -124,7 +124,7 @@ var AppDataProvider = function() {
 // nivitha
 //--------------------------------------------------------------------------------------------------
     this.quickSession = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "Telnet",port:"23"}
+        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH",port:"22"}
     };
 
     this.sortCheckerDataProvider = {
@@ -134,6 +134,14 @@ var AppDataProvider = function() {
 
     };
 
+    this.ExportDataProvider = {
+        "IP/Hostname": {type:"text",dropdown: "IP / Hostname", selector: by.xpath('//smart-card2/div/div/div/div/div[2]/div/div[1]/span[2]'),filename:"./Resources/downloads/exportIpaddress.csv"},
+        'Device Name ': {type:"text",dropdown: "Device Name", selector: by.binding('card.name || card.hostname'),filename:"./Resources/downloads/exportDevice.csv"},
+        "Location ": {type:"text",dropdown: "Location", selector: by.binding('group.name'),filename:"./Resources/downloads/exportLocation"},
+        "Recent Acees": {type:"text",dropdown: "Recently Accessed", selector: by.binding('group.name'),filename:"./Resources/downloads/exportRecent.csv"}
+
+
+    };
     this.filterTagCheckerdataProvider = {
 
 
@@ -204,7 +212,8 @@ var AppDataProvider = function() {
             notes: "",
             user_name: "lab",
             password:"lab"
-        },
+        }
+        ,
         'All feilds': {
             Mandatory: false,
             deviceName: "TestDeviceCisco",

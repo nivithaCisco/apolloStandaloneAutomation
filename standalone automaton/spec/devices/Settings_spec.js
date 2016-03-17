@@ -2,11 +2,11 @@
  * Created by vikkanna on 2/15/2016.
  */
 
-var deviceTab = require('./../../POM/deviceTab.js');
-var deviceTabMain = require('./../../POM/deviceTabMain.js');
-var newSess = require('./../../POM/NewSessionPage.js');
+var deviceTab = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTab.js');
+var deviceTabMain = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTabMain.js');
+var newSess = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/NewSessionPage.js');
 var settPage = require('./../../POM/settingsPage.js');
-var AppDataProvider = require('./../../Data/data.js');
+var AppDataProvider = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/Data/data.js');
 var using = require('jasmine-data-provider');
 
 describe('Settings Tab :', function () {
@@ -185,7 +185,7 @@ describe('Settings Tab :', function () {
         settPage.sshRadio().click();
         newSess.newTab("New Session").click();
         expect(settPage.SSHClicked().isPresent()).toBe(true);
-        newSess.closeTab();
+        newSess.crossClose().click();
         settPage.settingsTab().click();
 
     });
@@ -195,7 +195,7 @@ describe('Settings Tab :', function () {
         settPage.telnetRadio().click();
         newSess.newTab("New Session").click();
         expect(settPage. telnetClicked().isPresent()).toBe(true);
-        newSess.closeTab();
+        newSess.crossClose().click();
 
     });
 
@@ -211,7 +211,7 @@ describe('Settings Tab :', function () {
        expect(newSess. userName().isPresent()).toBe(false);
         expect(newSess. password().isPresent()).toBe(false);
         expect(newSess. enablePassword().isPresent()).toBe(false);
-        newSess.closeTab();
+        newSess.crossClose().click();
     });
 
     it('Verify Enhanced Login flow for TELNET', function ()
@@ -225,7 +225,7 @@ describe('Settings Tab :', function () {
         expect(newSess. userName().isPresent()).toBe(true);
         expect(newSess. password().isPresent()).toBe(true);
         expect(newSess. enablePassword().isPresent()).toBe(true);
-        newSess.closeTab();
+        newSess.crossClose().click();
 
     });
 
@@ -252,6 +252,7 @@ describe('Settings Tab :', function () {
         newSess.closeTab();
     });
     });
+
 
   using(AppDataProvider.reconnWithCred, function (data, description) {
     it('Verify Reconnect with credentials option OFF', function ()
@@ -295,7 +296,7 @@ describe('Settings Tab :', function () {
             newSess.closeTab();
 
         });
-		  });
+  });
 
 
  using(AppDataProvider.reconnWithCred, function (data, description) {
@@ -314,7 +315,7 @@ describe('Settings Tab :', function () {
             newSess.disConnectSession();
             newSess.closeTab();
 			newSess.deleteAllDevice();
-            settPage.settingsTab().click();
+            settPage.devicesTab().click();
         });
 
     });
