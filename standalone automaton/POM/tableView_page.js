@@ -2,7 +2,7 @@
  * Created by vikkanna on 3/8/2016.
  */
 
-var deviceTabMain = require('./../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTabMain.js');
+var deviceTabMain = require('./deviceTabMain.js');
 
 var tableViewPage = function() {
 

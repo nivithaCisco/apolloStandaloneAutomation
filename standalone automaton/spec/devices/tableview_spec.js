@@ -2,14 +2,14 @@
  * Created by vikkanna on 3/8/2016.
  */
 
-var deviceTab = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTab.js');
-var newSess = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/NewSessionPage.js');
-var deviceTabMain = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTabMain.js');
+var deviceTab = require('./../../POM/deviceTab.js');
+var newSess = require('./../../POM/NewSessionPage.js');
+var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var settingsTabPage = require('./../../POM/settingsPage.js');
 var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 var tableViewPage = require('./../../POM/tableView_page.js');
-var DeviceTab = require('./../../../../../MyJabberFiles/vikkanna@cisco.com/Thursday/apolloStandaloneAutomation-QANivitha/standalone automaton/POM/deviceTab.js');
+var DeviceTab = require('./../../POM/deviceTab.js');
 
 describe('Table View ', function () {
 

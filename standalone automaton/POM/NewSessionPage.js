@@ -3,7 +3,7 @@
  * Created by vikkanna on 2/12/2016.
  */
  var deviceTabMain = require('./deviceTabMain.js');
-//var tableViewPage = require('./tableView_page.js');
+var tableViewPage = require('./tableView_page.js');
 
 var EC = protractor.ExpectedConditions;
 
