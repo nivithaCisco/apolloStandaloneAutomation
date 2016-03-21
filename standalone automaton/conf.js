@@ -1,5 +1,6 @@
 var HTMLReport = require('jasmine-xml2html-converter');
 var jasmineReporters = require('jasmine-reporters');
+var SpecReporter = require('jasmine-spec-reporter');
 
 exports.config = {
   directConnect: true,
@@ -20,6 +21,13 @@ exports.config = {
             savePath: 'testresults',
             filePrefix: 'xmloutput'
         }));
+		
+		
+        jasmine.getEnv().addReporter(new SpecReporter({
+            displayStacktrace: 'all',
+            displayPendingSpec: true,
+            displaySpecDuration: true
+        }));
 
     },
 
@@ -39,7 +47,7 @@ exports.config = {
 
 
     suites: {
-
+/*
         devices_predefined_data: [
             './spec/devices/export_spec.js',
             './spec/devices/SelectAll_spec.js',
@@ -52,6 +60,7 @@ exports.config = {
     './spec/devices/QuickRecent_spec.js',
         './spec/devices/Tag_spec.js'
         ],
+		*/
         devices_vik: [
             './spec/devices/NewSessionValidation_spec.js',
            './spec/devices/NewSession_spec.js',
@@ -65,6 +74,9 @@ exports.config = {
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 1500000
+	  showColors: true,
+      isVerbose: true,
+      includeStackTrace: true,
+      defaultTimeoutInterval: 1500000
   }
 };

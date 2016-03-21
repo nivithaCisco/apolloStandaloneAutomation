@@ -51,8 +51,8 @@ this.tableVi= function() {
 
     this.tableCol= function(row_num) {
         browser.sleep(2000);
-        return element.all(by.xpath("//tbody//tr[1]/child::*"));
-        //return  element.all(by.xpath("//tbody//tr['"+row_num+"']/child::*"));
+     // return element.all(by.xpath("//tbody//tr[1]/child::*"));
+       return  element.all(by.xpath("//tbody//tr["+row_num+"]/child::*"));
     };
 
     this.upload= function() {

@@ -22,6 +22,7 @@ describe('Table View ', function () {
         browser.wait(EC.visibilityOf(element(by.css('span[class= "icon-plus"]'))),900000);
     });
 
+
     using(AppDataProvider.addDevice, function (data, description) {
    it('Verify Select All is displayed while atleast a device is presemt ', function ()
     {
@@ -125,8 +126,7 @@ describe('Table View ', function () {
 
     console.log(exp);
     browser.sleep(3000);
-
-        tableViewPage.tableCol(data.dev_num).getText().then(function(row_val){
+               tableViewPage.tableCol(data.dev_num).getText().then(function(row_val){
 
 
          expect(row_val).toEqual(exp);
