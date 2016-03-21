@@ -5,9 +5,6 @@
 
 var DeviceTab = require('./../../POM/deviceTab.js');
 var filename='./Resources/downloads/devices.csv';
-
-
-
 var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var using = require('jasmine-data-provider');
 var AppDataProvider = require('./../../Data/data.js');
@@ -127,7 +124,7 @@ describe('Export', function () {
 
     using(AppDataProvider.ExportDataProvider, function (data, description) {
 
-        it('Export file Download', function () {
+        it('Export file Download' + data.dropdown, function () {
 
             DeviceTab.openSortPage(data.dropdown);
             browser.sleep(10000);
@@ -160,7 +157,7 @@ describe('Export', function () {
             DeviceTab.Download(type,filename,autoIt);
         });
 
-        it('Export file Compare', function () {
+        it('Export file Compare ' + data.dropdown, function () {
 
             var data;
             try {

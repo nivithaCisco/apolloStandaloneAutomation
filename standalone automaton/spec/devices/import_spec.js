@@ -1,6 +1,6 @@
 
 var DeviceTab = require('./../../POM/deviceTab.js');
-var filename='C:/Users/nivmanoh/Desktop/devices.csv';
+var filename='./Resources/import/csvDevices.csv';
 var deviceTabMain = require('./../../POM/deviceTabMain.js');
 
 
@@ -12,6 +12,11 @@ var parse = require('csv-parse');
 describe('Export', function () {
     beforeEach(function() {
         browser.sleep(20000);
+    });
+
+    it('Import file', function () {
+        var autoIt='../Resources/AutoItScripts/import.exe';
+        DeviceTab.importCSV(filename,autoIt);
     });
 
     it('Export file', function () {
@@ -28,12 +33,12 @@ describe('Export', function () {
             console.log("total devices : " + totalDevices);
             console.log("total pages : " + totalPages);
             var totalDevicesExcel= par.length;
-          for (var j = 1; j < totalDevicesExcel; j++) {
+          for (var k= 1; k < totalDevicesExcel; k++) {
 
-                (function (j, totalDevicesExcel) {
+                (function (k, totalDevicesExcel) {
 
-                    console.log(par[j][3]+","+par[j][5]);
-                    deviceTabMain.setSearch(par[j][3]+","+par[j][5]);
+                    console.log(par[k][3]+","+par[k][5]);
+                    deviceTabMain.setSearch(par[k][3]+","+par[k][5]);
 
                     browser.sleep(20000);
 
@@ -43,13 +48,30 @@ describe('Export', function () {
                         {
                             element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).click().then(function() {
 
-                                //expect(par[j][0]).toEqual(deviceTabMain.getDevName());
+                                expect(par[k][0]).toEqual(deviceTabMain.getDevName());
+                                expect(par[k][2]).toEqual(deviceTabMain.getLocation());
+                                expect(par[k][3]).toEqual(deviceTabMain.getHostName());
+                                expect(par[k][4].toUpperCase()).toEqual(deviceTabMain.getConnection());
+                                expect(par[k][5]).toEqual(deviceTabMain.getPort());
+                                DeviceTab.hasClass(element.all(by.css('.icon-star')).get(0), 'text-warning-alt').then(function (selected) {
+                                    if (selected) {
+                                        expect(par[k][6]).toEqual("yes");
+                                    }
+                                    else {
+                                        expect(par[k][6]).toEqual("no");
+
+                                    }
+                                })
+                                expect(par[k][8]).toEqual(deviceTabMain.getNote());
+
                             });
                             DeviceTab.closeEditModel();
                         }
                         else
                         {
-                            console.log("tria***********")
+                            console.log("failed for "+par[k][3]+","+par[k][5])
+                            expect(false).toBe(false);
+
                         }
 
                         //
@@ -59,7 +81,7 @@ describe('Export', function () {
 
                     deviceTabMain.removeSearch();
 
-                    console.log("page index :dev no :" + j);
+                    console.log("page index :dev no :" + k);
 
 
 
@@ -70,44 +92,13 @@ describe('Export', function () {
 
 
                     // }
-                })(j,totalDevicesExcel);
+                })(k,totalDevicesExcel);
 
 
             }
 
 
         });
-
-
-    });
-
-    xit('Export file', function () {
-        encoding = 'utf8'; // 'ascii' or 'utf8'
-
-
-        var options = { readOptions: { encoding: encoding ,hasHeader: true }};
-//~ options.hasHeader = true;
-//~ options.fieldIndexes = [ 1, 3, 4 ];
-        parseCsvFile(filename, options,
-            function onNext(record)
-            {
-                console.log(record)     ;
-                deviceTabMain.setSearch(record[3]+","+record[5]);
-
-                element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).click().then(function() {
-
-
-                });
-                DeviceTab.closeEditModel();
-
-            },
-            function onComplete()
-            {
-                console.log('Done');
-            }
-        );
-
-
 
 
     });

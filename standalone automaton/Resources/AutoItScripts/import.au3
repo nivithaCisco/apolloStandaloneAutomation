@@ -1,0 +1,11 @@
+Sleep(3000)
+WinWaitActive("Open")
+Sleep(3000)
+Send(@ScriptDir & "\..\import\")
+;Send("C:\Users\nivmanoh\Documents\office document\apollo Standalone\standalone automaton\standalone automaton\Resources\downloads\");
+Send("{ENTER}")
+Sleep(3000)
+Send("csvDevices.csv")
+Sleep(3000)
+Send("{ENTER}")
+Sleep(3000)
