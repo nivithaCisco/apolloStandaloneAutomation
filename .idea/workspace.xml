@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78ce34db-741d-45a7-a371-4fbeb200a716" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/POM/NewSessionPage.js" afterPath="$PROJECT_DIR$/standalone automaton/POM/NewSessionPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/NewSessionValidation_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/NewSessionValidation_spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/NewSession_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/NewSession_spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/Settings_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/Settings_spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/standalone automaton/Resources/import/csvDevices.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/import.au3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/import.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/importDelete.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/conf.js" afterPath="$PROJECT_DIR$/standalone automaton/conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/POM/deviceTab.js" afterPath="$PROJECT_DIR$/standalone automaton/POM/deviceTab.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/Resources/downloads/devices.csv" afterPath="$PROJECT_DIR$/standalone automaton/Resources/downloads/devices.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportDevice.csv" afterPath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportDevice.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportIpaddress.csv" afterPath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportIpaddress.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportLocation.csv" afterPath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportLocation.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportRecent.csv" afterPath="$PROJECT_DIR$/standalone automaton/Resources/downloads/exportRecent.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/POM/tableView_page.js" afterPath="$PROJECT_DIR$/standalone automaton/POM/tableView_page.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js" afterPath="$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/report/test-html-report.html" afterPath="$PROJECT_DIR$/standalone automaton/report/test-html-report.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/standalone automaton/testresults/xmloutput.xml" afterPath="$PROJECT_DIR$/standalone automaton/testresults/xmloutput.xml" />
     </list>
     <ignored path="apolloStandaloneAutomation.iws" />
@@ -39,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -55,26 +58,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewSessionValidation_spec.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/NewSessionValidation_spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="60" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SelectAll_spec.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/SelectAll_spec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Settings_spec.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/Settings_spec.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="import_spec.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="import_spec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6842103">
-              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.18257262">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -105,31 +88,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conf.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/standalone automaton/conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.0381079">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="52" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="46" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deviceTabMain.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/standalone automaton/POM/deviceTabMain.js">
+      <file leaf-file-name="export_spec.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+              <caret line="81" column="59" selection-start-line="81" selection-start-column="59" selection-end-line="81" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewSessionPage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/standalone automaton/POM/NewSessionPage.js">
+      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/standalone automaton/Data/data.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/protractor/node_modules/jasminewd2/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deviceTab.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/standalone automaton/POM/deviceTab.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.4528303">
+              <caret line="339" column="23" selection-start-line="339" selection-start-column="23" selection-end-line="339" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -156,7 +159,6 @@
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/trail.js" />
         <option value="$PROJECT_DIR$/standalone automaton/POM/deviceTabMain.js" />
         <option value="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/delete.bat" />
-        <option value="$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/Filter_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/sort_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/addDevice_spec.js" />
@@ -164,10 +166,7 @@
         <option value="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/exportIpaddress.au3" />
         <option value="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/exportLocation.au3" />
         <option value="$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/exportRecent.au3" />
-        <option value="$PROJECT_DIR$/standalone automaton/POM/deviceTab.js" />
-        <option value="$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/QuickRecent_spec.js" />
-        <option value="$PROJECT_DIR$/standalone automaton/conf.js" />
         <option value="$PROJECT_DIR$/standalone automaton/Data/data.js" />
         <option value="$PROJECT_DIR$/standalone automaton/POM/tableView_page.js" />
         <option value="$PROJECT_DIR$/standalone automaton/POM/NewSessionPage.js" />
@@ -175,6 +174,10 @@
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/Settings_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/NewSession_spec.js" />
         <option value="$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js" />
+        <option value="$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js" />
+        <option value="$PROJECT_DIR$/standalone automaton/POM/deviceTab.js" />
+        <option value="$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js" />
+        <option value="$PROJECT_DIR$/standalone automaton/conf.js" />
       </list>
     </option>
   </component>
@@ -214,6 +217,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -364,7 +368,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -449,16 +452,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="2582" height="1406" extended-state="6" />
-    <editor active="false" />
+    <frame x="-11" y="-11" width="2582" height="1406" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13868037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32281554" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35436893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35436893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -468,6 +470,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32281554" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -506,6 +509,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/standalone automaton/POM/deviceTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/Filter_spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -669,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New Text Document.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/standalone automaton/Resources/AutoItScripts/exportDevice.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -727,7 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="710" column="6" selection-start-line="710" selection-start-column="6" selection-end-line="710" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -751,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -759,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,15 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,23 +782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/Data/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="6" selection-start-line="251" selection-start-column="6" selection-end-line="251" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/POM/deviceTab.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,14 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/NewSession_spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/QuickRecent_spec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -875,26 +841,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js">
+    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6842103">
-          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/tableview_spec.js">
+    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/protractor/node_modules/jasminewd2/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone automaton/Data/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/NewSession_spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/export_spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="59" selection-start-line="81" selection-start-column="59" selection-end-line="81" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone automaton/POM/deviceTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4528303">
+          <caret line="339" column="23" selection-start-line="339" selection-start-column="23" selection-end-line="339" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/standalone automaton/conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0381079">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="52" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="46" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/standalone automaton/spec/devices/import_spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18257262">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding />
         </state>
       </provider>

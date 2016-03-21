@@ -71,6 +71,42 @@ var gritterClose=  element.all(by.xpath('//a[@class="gritter-close"]'));
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+//import
+
+    this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
+    this.importCsvDevices=element(by.xpath("//a[text()='Import from CSV']"));
+    this.importCsvArea=element(by.xpath("//div[@id='fileArea']/div"))
+    this.importDeviceIcon=element(by.xpath('//a[@tooltip="Import Devices"]/span'));
+    var UploadButton=element(by.binding("::'_Upload_' | i18n"));
+
+    this.importCSV = function (filename,autoIt) {
+
+
+        var importFile = function () {
+            exec(path.resolve(__dirname, autoIt), function (err, data) {
+                console.log(err)
+                console.log(data.toString());
+            });
+
+
+        }
+        this.importDevice.click();
+        this.importCsvDevices.click();
+            this.importCsvArea.click().then(function () {
+                importFile()
+                //browser.sleep(80000);
+                browser.driver.wait(function () {
+                    return UploadButton.isEnabled();
+                }, 900000)
+            });// ends
+        UploadButton.click();
+        browser.sleep(20000);
+        element(by.xpath('//div[@class="modal-header"]/button')).click();
+
+    }
+
+
+
 
     //download
 

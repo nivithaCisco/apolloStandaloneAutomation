@@ -47,27 +47,27 @@ exports.config = {
 
 
     suites: {
-/*
+
         devices_predefined_data: [
-            './spec/devices/export_spec.js',
-            './spec/devices/SelectAll_spec.js',
-            './spec/devices/Filter_spec.js',
-           './spec/devices/sort_spec.js'
+            './spec/devices/import_spec.js',
+           // './spec/devices/export_spec.js',
+           // './spec/devices/SelectAll_spec.js',
+           // './spec/devices/Filter_spec.js',
+           //'./spec/devices/sort_spec.js'
         ],
+
         devices_nivi: [
         './spec/devices/Landing_spec.js',
     './spec/devices/addDevice_spec.js',
     './spec/devices/QuickRecent_spec.js',
         './spec/devices/Tag_spec.js'
         ],
-		*/
+
         devices_vik: [
             './spec/devices/NewSessionValidation_spec.js',
            './spec/devices/NewSession_spec.js',
            './spec/devices/Settings_spec.js',
-           './spec/devices/tableview_spec.js'
-
-        ]
+           './spec/devices/tableview_spec.js']
 
     },
     

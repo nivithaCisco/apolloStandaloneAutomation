@@ -1,0 +1,4 @@
+Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
+,,,192.168.1.1,ssh,22,yes,,
+Dont Delete,,Bangalore,TestHost,ssh,22,no,good,
+,,,192.168.2.1,ssh,22,yes,,
