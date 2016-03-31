@@ -1,0 +1,8 @@
+Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
+Alt Port 172.18.192.14 SSH,,,172.18.192.14,ssh,30,no,,
+Alt Port 172.18.192.14 SSH 23,,,172.18.192.14,ssh,23,no,,
+Alt Port 172.18.192.14 TELNET,,,172.18.192.14,telnet,50,no,,
+Max Port 172.18.192.14 SSH 65535,,,172.18.192.14,ssh,65535,no,,
+Max Port 172.18.194.55 TELNET 65535,,,172.18.194.55,telnet,65535,no,,
+Min Port 172.18.192.14 SSH 1,,,172.18.192.14,ssh,1,no,,
+Min Port 172.18.194.55 TELNET 1,,,172.18.194.55,telnet,1,no,,

@@ -217,6 +217,7 @@ var NewSessionTab = function() {
             browser.sleep(2000);
         })
 
+
     };
 
 

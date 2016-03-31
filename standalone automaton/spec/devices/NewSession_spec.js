@@ -1,6 +1,7 @@
 /**
  * Created by vikkanna on 3/8/2016.
  */
+
 var deviceTab = require('./../../POM/deviceTab.js');
 var newSess = require('./../../POM/NewSessionPage.js');
 var deviceTabMain = require('./../../POM/deviceTabMain.js');
@@ -23,7 +24,7 @@ describe('New Session tab ', function () {
         tableViewPage.handleTableView('GRID');
     });
 
-
+/*
     it('Verify whether host name field is selected by default while New Session tab is clicked', function ()
     {
         settingsTabPage.settingsTab().click();
@@ -299,7 +300,7 @@ describe('New Session tab ', function () {
 
     });
 
-
+*/
 
     it('Verify the known connection info is updated on the session connection form for recent session', function ()
     {
@@ -312,13 +313,22 @@ describe('New Session tab ', function () {
         newSess.mulcloseTab("172.18.192.14");
         newSess.recentSession("172.18.192.14").click();
 
+       browser.sleep(5000);
+
+        var elm =   element(by.binding("tab.name || tab._console.session.address || ('_NewSession_' | i18n)"));
+
+        elm.getText().then(function(text){
+            expect(text).toEqual("172.18.192.14");
+        })
 
 
+        /*
         var elm = element(by.model("tab._console.session.address"));
 
         elm.getAttribute("value").then(function(text){
             expect(text).toEqual("172.18.192.14");
         })
+        */
     newSess.crossClose().click();
 
 });

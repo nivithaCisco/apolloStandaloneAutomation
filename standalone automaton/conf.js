@@ -47,13 +47,13 @@ exports.config = {
 
 
     suites: {
-
+/*
         devices_predefined_data: [
             './spec/devices/import_spec.js',
-           // './spec/devices/export_spec.js',
-           // './spec/devices/SelectAll_spec.js',
-           // './spec/devices/Filter_spec.js',
-           //'./spec/devices/sort_spec.js'
+            './spec/devices/export_spec.js',
+            './spec/devices/SelectAll_spec.js',
+            './spec/devices/Filter_spec.js',
+           './spec/devices/sort_spec.js'
         ],
 
         devices_nivi: [
@@ -63,11 +63,20 @@ exports.config = {
         './spec/devices/Tag_spec.js'
         ],
 
-        devices_vik: [
+ */    devices_son: [
             './spec/devices/NewSessionValidation_spec.js',
-           './spec/devices/NewSession_spec.js',
-           './spec/devices/Settings_spec.js',
-           './spec/devices/tableview_spec.js']
+
+        ],
+
+        devices_vik: [
+
+          './spec/devices/NewSession_spec.js',
+          './spec/devices/Settings_spec.js',
+         './spec/devices/tableview_spec.js',
+            './spec/devices/Import_From_CSV_Spec.js',
+           // './spec/devices/ImportFromSecureCRT_Spec.js',
+            //'./spec/devices/ASA_spec.js',
+        ]
 
     },
     

@@ -27,6 +27,7 @@ describe('Test Terminal Connections', function () {
 
        using(AppDataProvider.newSessionVal, function (data, description) {
             it('Verify the session is Connected - ' + description, function () {
+                newSess.deleteAllDevice();
                 settingsTabPage.settingsTab().click();
                 settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
                 newSess.createNewSession(data.hostname_ip, data.user_name, data.password, data.conn_type, "ON");

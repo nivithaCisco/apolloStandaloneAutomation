@@ -1,0 +1,4 @@
+Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
+172.18.192.14 S 22,,,172.18.192.14,ssh,22,no,,
+172.18.192.14 T 23,,,172.18.192.14,telnet,23,no,,
+172.18.192.14 T 24,,,172.18.192.14,telnet,24,no,,

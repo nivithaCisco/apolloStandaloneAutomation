@@ -113,6 +113,53 @@ var gritterClose=  element.all(by.xpath('//a[@class="gritter-close"]'));
     this.exportDevice=element(by.xpath('//a[@tooltip="Export Devices"]'));
     this.exportDeviceIcon=element(by.xpath('//a[@tooltip="Export Devices"]/span'));
 
+
+    this.DownloadV = function (type,filename,autoIt,delete_path){
+
+
+             browser.sleep(5000);
+            var batFile= delete_path;
+
+            exec(path.resolve(__dirname, batFile) , function(err, data) {
+                console.log("delete");
+                console.log("The error "+err)
+                console.log(data.toString());
+            })
+
+        browser.sleep(5000);
+
+
+        browser.driver.wait(function () {
+            return !fs.existsSync(filename);
+        }, 40000)
+
+        var downloadFile =function(){
+            browser.sleep(2000);
+            exec(path.resolve(__dirname,autoIt) , function(err, data) {
+                console.log(err)
+                console.log(data.toString());
+                browser.sleep(2000);
+            });
+
+
+        }
+
+        this.exportDevice.click().then(function(){
+            browser.sleep(500);
+           downloadFile();
+
+            browser.sleep(30000);
+            /*
+            browser.driver.wait(function () {
+                return fs.existsSync(filename);
+
+            }, 900000)
+            */
+        });// ends
+
+    }
+
+
     this.Download = function (type,filename,autoIt){
 
         if(type=="Updated Date")
