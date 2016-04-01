@@ -40,8 +40,8 @@ var DevicePage = function() {
     this.headingRecentConnection=element(by.xpath('//div[@class="panel__header"]/h4'));
 
 
-    this.recentIpList=element.all(by.binding("getSessionInfo(recent.sessionName).name"));
-    this.recentTimeList=element.all(by.binding("recent.timestamp | fromNow:true"));
+    this.recentIpList=element.all(by.binding("session.sessionName || session.host"));
+    this.recentTimeList=element.all(by.binding("session.timestamp | fromNow:true"));
 
 
     this.switchInput=element.all(by.xpath('//span[@class="switch__input"]/span'));

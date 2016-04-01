@@ -1,4 +1,4 @@
 Device Name,Serial Number,Location,IP Address / Hostname,Protocol,Port,Favorite,Tags,Notes
-swtg-891a.cisco.com,,,swtg-891a.cisco.com,ssh,22,no,,
-TestDeviceCisco,,BGL-25-1,172.18.194.79,ssh,22,no,,
-172.18.194.56,,,172.18.194.56,ssh,22,no,,
+,,,192.168.1.1,ssh,22,yes,,
+Dont Delete,,Bangalore,TestHost,ssh,22,no,good,
+,,,192.168.2.1,ssh,22,yes,,
