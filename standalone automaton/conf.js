@@ -56,18 +56,19 @@ exports.config = {
            //'./spec/devices/sort_spec.js'
         ],
 
-        devices_nivi: [
+
+     /*   devices_nivi: [
         './spec/devices/Landing_spec.js',
-    './spec/devices/addDevice_spec.js',
+   './spec/devices/addDevice_spec.js',
     './spec/devices/QuickRecent_spec.js',
         './spec/devices/Tag_spec.js'
-        ],
+        ],*/
 
-        devices_vik: [
+       /* devices_vik: [
             './spec/devices/NewSessionValidation_spec.js',
            './spec/devices/NewSession_spec.js',
            './spec/devices/Settings_spec.js',
-           './spec/devices/tableview_spec.js']
+           './spec/devices/tableview_spec.js'] */
 
     },
     

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Export" timestamp="2016-03-21T15:10:00" hostname="localhost" time="145.623" errors="0" tests="2" skipped="1" disabled="0" failures="0">
-  <testcase classname="Export" name="Import file" time="0.001">
-   <skipped />
-  </testcase>
-  <testcase classname="Export" name="Export file" time="145.62" />
+ <testsuite name="Export" timestamp="2016-03-28T16:05:12" hostname="localhost" time="518.454" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="Export" name="Check if telnet is selected as global protocol " time="24.39" />
+  <testcase classname="Export" name="Import file" time="55.354" />
+  <testcase classname="Export" name="Import  file Check" time="438.699" />
  </testsuite>
 </testsuites>
