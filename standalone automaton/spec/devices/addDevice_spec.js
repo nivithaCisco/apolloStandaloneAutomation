@@ -3,14 +3,30 @@
  */
 var deviceTabMain = require('./../../POM/deviceTabMain.js');
 var AppDataProvider = require('./../../Data/data.js');
+var settingsTabPage = require('./../../POM/settingsPage.js');
+var DeviceTab = require('./../../POM/deviceTab.js');
+var EC = protractor.ExpectedConditions;
+
+var newSess = require('./../../POM/NewSessionPage.js');
+
 var using = require('jasmine-data-provider');
 
 describe('Add Device tests', function () {
+    beforeEach(function() {
+        browser.sleep(10000);
+        DeviceTab.gritterNotifyClose();
+
+    });
+
+    it('Check if Enhanced Login Flow is ON ', function ()
+    {
+        settingsTabPage.settingsTab().click();
+        settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
+        DeviceTab.deviceTab.click();
+    });
 
     using(AppDataProvider.AddDeviceDataProvider, function (data, description) {
         it('Device Page_Add Device', function () {
-            browser.sleep(10000);
-
             deviceTabMain.getIconPlus();
             deviceTabMain.setHostName(data.ipAddress);
             deviceTabMain.setPort(data.port);
@@ -58,17 +74,70 @@ describe('Add Device tests', function () {
 
 
 
+        it('Verify Connection through SmartCard '+ description, function () {
+            deviceTabMain.cardConnect();
+            browser.sleep(10000);
+            var name=data.deviceName;
+            if(data.deviceName=="") {
+                name = data.ipAddress;
 
-        it('Add Tag', function() {
+            }
+            expect(newSess.newTab(name).getText()).toEqual(name);
 
+            newSess.userName().sendKeys(data.user_name);
+            newSess.password().sendKeys(data.password);
+            newSess.connect().click();
+            newSess.handleAlert();
+            browser.wait(EC.visibilityOf(newSess.getVersionTerminal),90000);
+            var version= (newSess.getVersionTerminal).getText().then(function(value){
 
-            deviceTabMain.addTagBulk("checlk");
-            expect(element.all(by.className('gritter-title')).getText()).toContain('Device Updated');
+                console.log(value.split(" ")[3]);
+                value=value.split(" ")[3];
+                return value;
+            });
+            newSess. disConnectSession();
+            newSess.session_dis_connected();
+            newSess.closeTab();
+
+            browser.sleep(10000);
+            deviceTabMain.setSearch(data.ipAddress);
+            browser.sleep(10000);
+            browser.wait((deviceTabMain.isLoading).isPresent());
+            expect(deviceTabMain.versionCard()).toEqual(version);
+
+            deviceTabMain.removeSearch();
+
 
         });
+        it('Verify if Recent List gets updated : Latest connection '+ description, function () {
+
+            DeviceTab.recentIpList.getText().then(function(items) {
+                console.log(items)
+                expect(DeviceTab.recentIpList.length).toEqual(DeviceTab.recentTimeList.getText().length);
+                var name=data.deviceName;
+                if(data.deviceName=="") {
+                    name = data.ipAddress;
+
+                }
+                expect(items[0]).toBe(name);
+            });
+        });
+
+        //it('Favorite from card', function() {
+        //    expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-muted');
+        //    deviceTabMain.cardFav();
+        //    expect(element.all(data.selector).getAttribute('class')).toMatch('icon-star  text-warning-alt');
+        //
+        //
+        //});
+
+
 
         it('Delete Device - ' + description, function () {
             browser.sleep(3000);
+            deviceTabMain.setSearch(data.ipAddress);
+            browser.sleep(10000);
+            browser.wait((deviceTabMain.isLoading).isPresent());
             deviceTabMain.deleteDevice();
             deviceTabMain.removeSearch();
             expect(element.all(by.className('gritter-title')).getText()).toContain('Delete Device');

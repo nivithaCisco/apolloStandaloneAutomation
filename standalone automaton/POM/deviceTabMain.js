@@ -1,6 +1,8 @@
 /**
  * Created by nivmanoh on 2/8/2016.
  */
+var fs = require('fs');
+var util = require('util')
 var deviceTabMain= function() {
 
 this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
@@ -9,6 +11,13 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
     this.importCSV=element(by.binding("::'_ImportFrom_' | i18n:'CSV'"));
     this.importPutty=element(by.binding("::'_ImportFrom_' | i18n:'PuTTY'"));
     this.importSecureCRT=element(by.binding("::'_ImportFrom_' | i18n:'SecureCRT'"));
+
+    this.cardConnect= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Connect"]')).click();}
+this.cardFavIcon=element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Toggle Favorite"]/span'));
+    this.cardFav= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Toggle Favorite"]')).click();}
+    this.cardEdit= function() { element(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).click();}
+
+
 //----------------------------------------------------------------------------------------------------------------------------------
    this.search=element(by.model('searchText'));
     this.searchIcon=element(by.xpath('//input[@id="search"]/../label/span'));
@@ -17,6 +26,42 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
             element(by.model('searchText')).sendKeys(value,protractor.Key.ENTER);
         });
 
+    }
+
+
+  this.parseCsvFile=function(fileName, callback){
+        var stream = fs.createReadStream(fileName)
+      console.log("1")
+        var iteration = 0, header = [], buffer = ""
+        stream.addListener('data', function(data){
+            console.log(data)
+            buffer+=data.toString()
+            var parts = buffer.split('\r\n')
+            parts.forEach(function(d, i){
+                if(i == parts.length-1) return
+                if(iteration++ == 0 && i == 0){
+                    console.log("3")
+
+                    header = d
+                }else{
+                    console.log("4")
+
+                    callback(buildRecord(d))
+                }
+            })
+            buffer = parts[parts.length-1]
+        })
+
+        function buildRecord(str){
+            var record = {}
+            console.log("2")
+
+            str.split(pattern).forEach(function(value, index){
+                if(header[index] != '')
+                    record[header[index].toLowerCase()] = value.replace(/"/g, '')
+            })
+            return record
+        }
     }
     this.removeSearch = function(){
         element.all(by.css('span[ng-click="removeTag(tag)"]')).then(function (rows) {
@@ -49,6 +94,12 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
     {
         return element(by.binding("card.port")).getText();
     }
+    this.versionCard=function()
+    {
+        return element(by.binding("card.version")).getText();
+    }
+
+
     this.selectDevice = function(){
 
         element.all(by.css('a[ng-click="toggleSelected($event, card, true, options)"]')).then(function(rows) {
@@ -63,11 +114,22 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
         element(by.xpath('//div/span/span[2]/a')).click();
     }
     this.deleteOption= function() { element(by.binding("'_Delete_' | i18n")).click();}
+
+    this.deleteTagOption= function() { element(by.binding("::'_DeleteTags_' | i18n")).click();}
+
     this.addTagOption= function() { element(by.binding("'_AddTags_' | i18n")).click();}
 
     this.deleteButton=function() {
         element(by.buttonText("Delete")).click();
     }
+
+    this.addCard= function()
+
+        {
+            element(by.binding("(editing ? '_Save_' : '_Add_') | i18n")).click();
+        }
+
+
     this.savetag= function()
 
     {
@@ -78,10 +140,7 @@ this.importDevice=element(by.xpath('//a[@tooltip="Import Devices"]'));
 //
 this.addTagBulk=function(value)
 {
-    this.selectDevice();
 
-    this.bulkAction();
-    this.addTagOption();
     browser.sleep(4000);
     this.setTag(value);
     browser.sleep(2000);
@@ -115,7 +174,36 @@ this.addTagBulk=function(value)
         this.addDevice.click();
     };
 
-    var devName = element(by.css('input[id= "name"]'));
+    var devName = element(by.css('input[id="name"]'));
+
+    this.getDevName = function() {
+        browser.sleep(3000);
+        return devName.getAttribute('value');
+    };
+
+    var note = element(by.model('device.notes'));
+    this.getNote = function() {
+        browser.sleep(3000);
+        return note.getAttribute('value');
+    };
+    var serialNum = element(by.model('device.serialnumber'));
+
+    this.getserialNum = function(name) {
+        browser.sleep(3000);
+        serialNum.isPresent().then(function(present){
+            if(present)
+            {
+                return devName.getAttribute('value');
+
+            }
+            else
+            {
+                return "";
+            }
+
+        })
+    };
+
 
     this.setDevName = function(name) {
         browser.sleep(3000);
@@ -128,11 +216,21 @@ this.addTagBulk=function(value)
         browser.sleep(3000);
         hostName.sendKeys(name);
     };
+
+    this.getHostName = function() {
+        browser.sleep(3000);
+        return hostName.getAttribute('value');
+    };
     var location = element(by.css('input[id= "location"]'));
 
     this.setLocation = function(name) {
         browser.sleep(3000);
         location.sendKeys(name);
+    };
+
+    this.getLocation = function() {
+        browser.sleep(3000);
+        return location.getAttribute('value');
     };
 
     this.setConnType = function(type) {
@@ -147,6 +245,14 @@ this.addTagBulk=function(value)
         }
     };
 
+    var connection = element(by.xpath('//span[@class="radio__input"]/../input[@checked]/../span[2]'));
+
+    this.getConnection = function() {
+        browser.sleep(3000);
+        return connection.getText();
+    };
+
+
 
 
 
@@ -157,7 +263,10 @@ this.addTagBulk=function(value)
             port.sendKeys(type);
         });
     }
-
+    this.getPort = function() {
+        browser.sleep(3000);
+        return port.getAttribute('value');
+    };
 
     this.selectmfg = element(by.id('manufacturer'));
 
@@ -175,10 +284,12 @@ this.addTagBulk=function(value)
     };
 
 
+this.tag=element(by.id('inputTag'));
 
     this.setTag = function(name) {
-        element(by.id('inputTag')).sendKeys(name);
-        element(by.css('button[ng-click="addTag(tagText);"]')).click()
+        this.tag.sendKeys(name);
+        browser.sleep(3000);
+       element(by.css('button[ng-click="addTag(tagText);"]')).click()
     };
 
 
@@ -189,10 +300,9 @@ this.addTagBulk=function(value)
         browser.sleep(3000);
     };
 
-    var close = element(by.xpath("//span[@class='icon-close"));
+    var close = element(by.xpath("//span[@class='icon-close]"));
 
     this.getClose = function() {
-        browser.sleep(3000);
         close.click();
     };
 

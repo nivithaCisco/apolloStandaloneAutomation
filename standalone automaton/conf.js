@@ -1,5 +1,6 @@
 var HTMLReport = require('jasmine-xml2html-converter');
 var jasmineReporters = require('jasmine-reporters');
+var SpecReporter = require('jasmine-spec-reporter');
 
 exports.config = {
   directConnect: true,
@@ -20,6 +21,13 @@ exports.config = {
             savePath: 'testresults',
             filePrefix: 'xmloutput'
         }));
+		
+		
+        jasmine.getEnv().addReporter(new SpecReporter({
+            displayStacktrace: 'all',
+            displayPendingSpec: true,
+            displaySpecDuration: true
+        }));
 
     },
 
@@ -36,16 +44,50 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-    specs:['./spec/devices/Landing_spec.js',
-            './spec/devices/download_spec.js',
-            './spec/devices/addDevice_spec.js',
-             './spec/devices/Filter_spec.js',
-              './spec/devices/sort_spec.js',
-              './spec/devices/SelectAll_spec.js',
-              './spec/devices/NewSession_spec.js'],
+
+
+    suites: {
+
+        devices_predefined_data: [
+            './spec/devices/import_spec.js',
+            './spec/devices/export_spec.js',
+            './spec/devices/SelectAll_spec.js',
+            './spec/devices/Filter_spec.js',
+           './spec/devices/sort_spec.js'
+        ],
+
+        devices_nivi: [
+        './spec/devices/Landing_spec.js',
+    './spec/devices/addDevice_spec.js',
+    './spec/devices/QuickRecent_spec.js',
+        './spec/devices/Tag_spec.js'
+        ],
+
+   devices_son: [
+            './spec/devices/NewSessionValidation_spec.js',
+
+        ],
+
+        devices_vik: [
+
+          './spec/devices/NewSession_spec.js',
+          './spec/devices/Settings_spec.js',
+         './spec/devices/tableview_spec.js',
+            './spec/devices/ImportFromPutty_Spec.js',
+			
+			//----Yet to be done
+           // './spec/devices/ImportFromSecureCRT_Spec.js',
+            //'./spec/devices/ASA_spec.js',
+        ]
+
+    },
+    
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 1500000
+	  showColors: true,
+      isVerbose: true,
+      includeStackTrace: true,
+      defaultTimeoutInterval: 1500000
   }
 };

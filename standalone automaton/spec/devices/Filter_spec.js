@@ -5,13 +5,11 @@ var DeviceTab = require('./../../POM/deviceTab.js');
 var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 
+describe('Filter', function () {
 
-
-
-
-describe('Sorting', function () {
-
-
+    beforeEach(function() {
+        browser.sleep(10000);
+    });
 
     using(AppDataProvider.filterTagCheckerdataProvider, function (data, description) {
 
@@ -26,7 +24,7 @@ describe('Sorting', function () {
             DeviceTab.showAllCheck(filterType).then(function () {
 
                 // selecting the filter
-                DeviceTab.applyFilter(filterValue);
+                DeviceTab.applyFilter(filterValue,filterType);
                 // get the number of devices and number of pages
                 DeviceTab.getNoOfCardsElem(data.page).then(function (value) {
                     var totalDevices = parseInt(value.split(" ")[3]);
@@ -55,10 +53,16 @@ describe('Sorting', function () {
                                 (function (j, devicesInCurrentPage) {
 
                                     console.log("page index :" + pageIndex + " dev no :" + j);
+                                    DeviceTab.gritterNotifyClose();
+                                    element.all(by.xpath('//div [@class="card__footer ng-scope"]/a[@tooltip="Edit"]')).get(j-1).click();
 
-                                    element.all(by.css('a[ng-click="editDevice(card); $event.stopPropagation()"]')).get(j-1).click();
+                                    if(filterValue!= "No Tags") {
+                                        expect(DeviceTab.editTagList()).toContain(filterValue);
+                                    }
+                                    if(filterValue == "No Tags") {
+                                        expect(DeviceTab.tagList.isPresent()).toBeFalsy();
 
-                                    expect(DeviceTab.editTagList()).toContain(filterValue);
+                                    }
 
                                     DeviceTab.closeEditModel();
                                 })(j, devicesInCurrentPage);
