@@ -20,7 +20,7 @@ var parse = require('csv-parse');
 
 
 
-describe('Export', function () {
+describe('Export from CSV', function () {
     beforeEach(function() {
         browser.sleep(10000);
     });

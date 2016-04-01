@@ -312,7 +312,7 @@ var AppDataProvider = function() {
 
 
     this.quickSession = {
-        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "SSH",port:"22"}
+        "172.18.194.56": {hostname_ip: "172.18.194.56", user_name: "lab", password:"lab", conn_type: "Telnet",port:"23"}
     };
 
     this.sortCheckerDataProvider = {

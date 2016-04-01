@@ -101,7 +101,7 @@ var gritterClose=  element.all(by.xpath('//a[@class="gritter-close"]'));
             });// ends
         UploadButton.click();
         browser.sleep(20000);
-        element(by.xpath('//div[@class="modal-header"]/button')).click();
+       // element(by.xpath('//div[@class="modal-header"]/button')).click(); //this is fixed april 1st 2016
 
     }
 

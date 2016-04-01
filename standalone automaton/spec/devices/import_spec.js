@@ -9,7 +9,7 @@ var fs = require('fs');
 var parseCsvFile = require('./../../POM/ParseCsvFile');
 var parse = require('csv-parse');
 
-describe('Export', function () {
+describe('Import CSV', function () {
     beforeEach(function() {
         browser.sleep(20000);
     });

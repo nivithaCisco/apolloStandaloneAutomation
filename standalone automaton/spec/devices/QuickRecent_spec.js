@@ -22,6 +22,7 @@ describe('Recent + Quick', function () {
     it('Check if Enhanced Login Flow is ON ', function ()
     {
         settingsTabPage.settingsTab().click();
+        settingsTabPage.telnetRadio().click();
         settingsTabPage.handleOvalButton("Enhanced Login Flow","ON");
         DeviceTab.deviceTab.click();
     });

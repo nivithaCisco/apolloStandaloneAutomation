@@ -114,8 +114,12 @@ describe('Add Device tests', function () {
             DeviceTab.recentIpList.getText().then(function(items) {
                 console.log(items)
                 expect(DeviceTab.recentIpList.length).toEqual(DeviceTab.recentTimeList.getText().length);
+                var name=data.deviceName;
+                if(data.deviceName=="") {
+                    name = data.ipAddress;
 
-                expect(items[0]).toBe(data.ipAddress);
+                }
+                expect(items[0]).toBe(name);
             });
         });
 

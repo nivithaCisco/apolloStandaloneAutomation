@@ -56,15 +56,14 @@ exports.config = {
            './spec/devices/sort_spec.js'
         ],
 
-
-       devices_nivi: [
+        devices_nivi: [
         './spec/devices/Landing_spec.js',
-   './spec/devices/addDevice_spec.js',
+    './spec/devices/addDevice_spec.js',
     './spec/devices/QuickRecent_spec.js',
         './spec/devices/Tag_spec.js'
         ],
 
-    devices_sonal: [
+ /*   devices_son: [
             './spec/devices/NewSessionValidation_spec.js',
 
         ],
@@ -78,7 +77,7 @@ exports.config = {
            // './spec/devices/ImportFromSecureCRT_Spec.js',
             //'./spec/devices/ASA_spec.js',
         ]
-
+        */
 
     },
     

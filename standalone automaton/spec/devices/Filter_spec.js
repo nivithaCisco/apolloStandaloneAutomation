@@ -5,7 +5,7 @@ var DeviceTab = require('./../../POM/deviceTab.js');
 var AppDataProvider = require('./../../Data/data.js');
 var using = require('jasmine-data-provider');
 
-describe('Sorting', function () {
+describe('Filter', function () {
 
     beforeEach(function() {
         browser.sleep(10000);
