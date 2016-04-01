@@ -63,7 +63,7 @@ exports.config = {
         './spec/devices/Tag_spec.js'
         ],
 
- /*   devices_son: [
+   devices_son: [
             './spec/devices/NewSessionValidation_spec.js',
 
         ],
@@ -73,11 +73,12 @@ exports.config = {
           './spec/devices/NewSession_spec.js',
           './spec/devices/Settings_spec.js',
          './spec/devices/tableview_spec.js',
-            './spec/devices/Import_From_CSV_Spec.js',
+            './spec/devices/ImportFromPutty_Spec.js',
+			
+			//----Yet to be done
            // './spec/devices/ImportFromSecureCRT_Spec.js',
             //'./spec/devices/ASA_spec.js',
         ]
-        */
 
     },
     
